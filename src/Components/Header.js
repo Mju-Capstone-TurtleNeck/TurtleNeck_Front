@@ -11,7 +11,7 @@ const HeaderContainer = styled.div`
   top: 0;
   width: 100%;
   height: 40px;
-  border-bottom: solid 1px grey;
+  border-bottom: solid 2px grey;
   background-color: #0d9e61;
 `;
 
