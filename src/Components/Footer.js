@@ -8,6 +8,7 @@ const FooterContainer = styled.div`
   bottom: 0;
   width: 100%;
   height: 40px;
+  border-top: solid 2px grey;
   background-color: #0d9e61;
 `;
 
