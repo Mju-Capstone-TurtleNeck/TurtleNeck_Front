@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   position: fixed;
   align-items: center;
   left: 0;
@@ -16,23 +16,21 @@ const HeaderContainer = styled.div`
 `;
 
 const TitleText = styled.div`
-  position: relative;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
+  padding-left: 0;
+  font-weight: bold;
+`;
+const RightMenu = styled.div`
+  color: white;
+  display: flex;
+  padding-left: 0;
+  font-size: 14px;
+  width: 150px;
 `;
 
-const LoginText = styled.div`
-  position: relative;
-  left: 41%;
-  color: white;
-  font-size: 10px;
-`;
-
-const SignupText = styled.div`
-  position: relative;
-  left: 43%;
-  color: white;
-  font-size: 10px;
+const LeftMenu = styled.div`
+  width: 150px;
 `;
 
 class Header extends Component {
@@ -44,11 +42,26 @@ class Header extends Component {
   render() {
     return (
       <HeaderContainer>
+        <LeftMenu>햄버거바</LeftMenu>
         <Link to="Home" style={{ textDecoration: "none" }}>
           <TitleText>TurtleNeck</TitleText>
         </Link>
-        <LoginText>로그인</LoginText>
-        <SignupText>회원가입</SignupText>
+        <RightMenu>
+          <Link to="Login" style={{ textDecoration: "none" }}>
+            <p style={{ color: "white" }}>로그인</p>
+          </Link>
+          <Link to="Signup" style={{ textDecoration: "none" }}>
+            <p
+              style={{
+                color: "white",
+                marginRight: "20px",
+                marginLeft: "30px",
+              }}
+            >
+              회원가입
+            </p>
+          </Link>
+        </RightMenu>
       </HeaderContainer>
     );
   }
