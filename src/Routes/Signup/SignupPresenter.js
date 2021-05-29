@@ -71,6 +71,11 @@ const BtnZip = styled.button`
   border-radius: 3px;
   box-shadow: 0px 1px 3px 1px gray;
 `;
+const Terms = styled.span`
+  float: right;
+  font-size: 11px;
+  color: blue;
+`;
 const SignupPresenter = () => (
   <>
     <Helmet>
@@ -99,24 +104,18 @@ const SignupPresenter = () => (
           <Input1 />
           <Need style={{ marginTop: "15px" }}>
             이용약관 동의<span style={{ color: "red" }}> (필수)</span>
-            <span style={{ float: "right", fontSize: "11px" }}>
+            <Terms>
               약관 보기
               <input type="checkbox" />
-            </span>
+            </Terms>
           </Need>
           <Need>
             개인정보 수집 및 이용 동의
             <span style={{ color: "red" }}> (필수)</span>
-            <span
-              style={{
-                float: "right",
-                fontSize: "11px",
-                verticalAlign: "-3px",
-              }}
-            >
+            <Terms>
               약관 보기
               <input type="checkbox" />
-            </span>
+            </Terms>
           </Need>
         </div>
         <BtnSignUp>가입하기</BtnSignUp>
