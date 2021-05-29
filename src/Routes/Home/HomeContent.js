@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 const Solution = styled.div`
   background: white;
   width: 80%;
@@ -118,7 +120,9 @@ function Result(props) {
       <p>거북목 교정 운동법</p>
       <Solution></Solution>
       <br />
-      <BtnFind>병원 찾기</BtnFind>
+      <Link to="Hospital" style={{ textDecoration: "none" }}>
+        <BtnFind>병원 찾기</BtnFind>
+      </Link>
     </div>
   );
 }
