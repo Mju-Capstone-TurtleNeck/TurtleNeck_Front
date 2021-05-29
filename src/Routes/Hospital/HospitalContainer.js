@@ -6,7 +6,7 @@ export default class extends React.Component {
   componentDidMount() {
     const script = document.createElement("script");
     script.async = true;
-    script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=APP_KEY";
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAOMAP_KEY}&autoload=false`;
     document.head.appendChild(script);
 
     script.onload = () => {
