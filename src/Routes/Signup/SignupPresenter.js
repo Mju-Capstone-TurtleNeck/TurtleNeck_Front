@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import styled from "styled-components";
+import DaumPostcode from "react-daum-postcode";
 const Section = styled.div`
   text-align: center;
 `;
@@ -56,7 +57,8 @@ const BtnSignUp = styled.button`
   border: white;
   border-radius: 10px;
   font-size: 18px;
-  background: #cae9da;
+  background: ${(props) => (props.disabled ? "#CAE9DA" : "#0D9E61")};
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 `;
 const BtnZip = styled.button`
   margin-top: 20px;
@@ -76,51 +78,132 @@ const Terms = styled.span`
   font-size: 11px;
   color: blue;
 `;
-const SignupPresenter = () => (
+const DialogAll = styled.div`
+  position: fixed;
+  width: 500px;
+  height: 450px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 130px;
+  bottom: 0;
+  border-radius: 0.3rem;
+  background: #0d9e61;
+  overflow: hidden;
+`;
+const DialogTitle = styled.div``;
+const DialogBottom = styled.div`
+  height: 30px;
+`;
+const DialogSection = styled.div`
+  height: 400px;
+  background: #cae9da;
+`;
+const BtnClose = styled.button`
+  cursor: pointer;
+`;
+const ZipDialog = (props) => {
+  return (
+    <DialogAll>
+      <DialogTitle>우편번호 검색</DialogTitle>
+      <DialogSection>
+        <DaumPostcode onComplete={(data) => props.select(data)} />
+        <DialogBottom>
+          <BtnClose onClick={props.close}>닫기</BtnClose>
+        </DialogBottom>
+      </DialogSection>
+    </DialogAll>
+  );
+};
+const Term1Dialog = (props) => {
+  return (
+    <DialogAll>
+      <DialogTitle>이용약관 </DialogTitle>
+      <DialogSection></DialogSection>
+      <DialogBottom>
+        <BtnClose onClick={props.close}>닫기</BtnClose>
+      </DialogBottom>
+    </DialogAll>
+  );
+};
+const Term2Dialog = (props) => {
+  return (
+    <DialogAll>
+      <DialogTitle>개인정보 수집 및 이용 동의 </DialogTitle>
+      <DialogSection></DialogSection>
+      <DialogBottom>
+        <BtnClose onClick={props.close}>닫기</BtnClose>
+      </DialogBottom>
+    </DialogAll>
+  );
+};
+const SignupPresenter = (props) => (
   <>
     <Helmet>
       <title>Signup | TurtleNeck</title>
     </Helmet>
     <Header />
-    <Section>
+    <Section onClick={props.CloseDialog}>
+      {props.ZipDialog ? (
+        <ZipDialog close={props.CloseDialog} select={props.SelectZip} />
+      ) : null}
+      {props.Term1Dialog ? <Term1Dialog close={props.CloseDialog} /> : null}
+      {props.Term2Dialog ? <Term2Dialog close={props.CloseDialog} /> : null}
       <SectionBox>
         <Title>회원가입</Title>
         <div
           style={{ marginLeft: "30px", marginRight: "30px", textAlign: "left" }}
         >
           <Need>아이디</Need>
-          <Input1 />
+          <Input1 onChange={(e) => props.SetId(e)} />
           <Need>비밀번호</Need>
-          <Input1 />
+          <Input1 onChange={(e) => props.SetPw(e)} />
           <Need>비밀번호 확인</Need>
-          <Input1 />
+          <Input1 onChange={(e) => props.SetPwConfirm(e)} />
           <Need>생년월일</Need>
-          <Input1 />
+          <Input1 onChange={(e) => props.SetBirth(e)} />
           <Need>이메일</Need>
-          <Input1 />
-          <Input2 style={{ marginLeft: 0 }} />-<Input2 />
-          <BtnZip>우편 번호</BtnZip>
+          <Input1 onChange={(e) => props.SetEmail(e)} />
+          <Input2 style={{ marginLeft: 0 }} readOnly value={props.zip} />
+          {/* -<Input2 /> */}
+          <BtnZip onClick={props.OpenZipDialog}>우편 번호</BtnZip>
           <Need>주소</Need>
-          <Input1 />
+          <Input1 onChange={(e) => props.SetAddr(e)} />
           <Need style={{ marginTop: "15px" }}>
             이용약관 동의<span style={{ color: "red" }}> (필수)</span>
-            <Terms>
-              약관 보기
+            <Terms onClick={(e) => props.SetTermFirst(e)}>
               <input type="checkbox" />
+            </Terms>
+            <Terms
+              onClick={() => props.OpenTerm1Dialog()}
+              style={{ cursor: "pointer" }}
+            >
+              약관 보기
             </Terms>
           </Need>
           <Need>
             개인정보 수집 및 이용 동의
             <span style={{ color: "red" }}> (필수)</span>
-            <Terms>
-              약관 보기
+            <Terms onClick={(e) => props.SetTermSecond(e)}>
               <input type="checkbox" />
+            </Terms>
+            <Terms
+              onClick={() => props.OpenTerm2Dialog()}
+              style={{ cursor: "pointer" }}
+            >
+              약관 보기
             </Terms>
           </Need>
         </div>
-        <BtnSignUp>가입하기</BtnSignUp>
+        <BtnSignUp
+          onClick={() => props.SignupBtnClick()}
+          disabled={props.disabled}
+        >
+          가입하기
+        </BtnSignUp>
       </SectionBox>
     </Section>
+
     <Footer />
   </>
 );
