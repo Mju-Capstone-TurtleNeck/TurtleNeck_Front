@@ -11,7 +11,7 @@ const SectionBox = styled.div`
   display: inline-block;
   margin-top: 80px;
   width: 450px;
-  height: 85vh;
+  padding-bottom: 30px;
   margin-top: 60px;
   border-radius: 40px;
   font-weight: 550;
