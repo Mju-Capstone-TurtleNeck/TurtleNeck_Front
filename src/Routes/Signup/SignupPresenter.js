@@ -24,19 +24,22 @@ const Title = styled.div`
   font-weight: 500;
 `;
 const Input1 = styled.input`
+  font-size: 20px;
   width: 330px;
-  height: 30px;
+  height: 40px;
   border: white;
   border-radius: 3px;
   box-shadow: 0px 1px 3px 1px gray;
   &:focus {
     outline: none;
   }
+  margin-bottom: 15px;
 `;
 const Input2 = styled.input`
   margin-top: 20px;
   margin-right: 5px;
   margin-left: 5px;
+  margin-bottom: 15px;
   &:focus {
     outline: none;
   }
@@ -44,7 +47,7 @@ const Input2 = styled.input`
   border-radius: 3px;
   box-shadow: 0px 1px 3px 1px gray;
   width: 80px;
-  height: 30px;
+  height: 40px;
 `;
 const Need = styled.p`
   margin: 0;
@@ -65,13 +68,17 @@ const BtnZip = styled.button`
   margin-right: 5px;
   margin-left: 5px;
   width: 90px;
-  height: 33px;
+  height: 42px;
   background: white;
   cursor: pointer;
   font-size: 12px;
   border: white;
   border-radius: 3px;
   box-shadow: 0px 1px 3px 1px gray;
+  vertical-align: -0.5px;
+  &:hover {
+    background: #cae9da;
+  }
 `;
 const Terms = styled.span`
   float: right;
@@ -157,9 +164,9 @@ const SignupPresenter = (props) => (
           <Need>아이디</Need>
           <Input1 onChange={(e) => props.SetId(e)} />
           <Need>비밀번호</Need>
-          <Input1 onChange={(e) => props.SetPw(e)} />
+          <Input1 onChange={(e) => props.SetPw(e)} type="password" />
           <Need>비밀번호 확인</Need>
-          <Input1 onChange={(e) => props.SetPwConfirm(e)} />
+          <Input1 onChange={(e) => props.SetPwConfirm(e)} type="password" />
           <Need>생년월일</Need>
           <Input1 onChange={(e) => props.SetBirth(e)} />
           <Need>이메일</Need>

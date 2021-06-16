@@ -60,32 +60,38 @@ export default class extends React.Component {
     });
   };
   SignupBtnClick = () => {
-    if (this.state.id === "") {
+    const { id, password, passwordconfirm, birth, email, zip, address } =
+      this.state;
+    if (id === "") {
       alert("아이디를 입력하세요.");
       return;
     }
-    if (this.state.password === "") {
+    if (password === "") {
       alert("비밀번호를 입력하세요.");
       return;
     }
-    if (this.state.passwordconfirm === "") {
+    if (passwordconfirm === "") {
       alert("비밀번호를 확인하세요.");
       return;
     }
-    if (this.state.birth === "") {
+    if (birth === "") {
       alert("생년월일을 입력하세요");
       return;
     }
-    if (this.state.email === "") {
+    if (email === "") {
       alert("이메일을 입력하세요");
       return;
     }
-    if (this.state.zip === "") {
+    if (zip === "") {
       alert("우편번호를 입력하세요");
       return;
     }
-    if (this.state.address === "") {
+    if (address === "") {
       alert("주소를 입력하세요");
+      return;
+    }
+    if (password !== passwordconfirm) {
+      alert("비밀번호가 일치하지 않습니다.");
       return;
     }
     alert("가입 승인????");
