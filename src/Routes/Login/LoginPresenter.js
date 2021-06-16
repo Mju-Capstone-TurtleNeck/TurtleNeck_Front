@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const Section = styled.div`
   text-align: center;
 `;
@@ -88,7 +89,9 @@ const LoginPresenter = () => (
         </InputOutside>
 
         <BtnSignUp>LOG IN</BtnSignUp>
-        <BtnSignUpLink>signup</BtnSignUpLink>
+        <Link to="Signup" style={{ textDecoration: "none" }}>
+          <BtnSignUpLink>signup</BtnSignUpLink>
+        </Link>
       </SectionBox>
     </Section>
     <Footer />
