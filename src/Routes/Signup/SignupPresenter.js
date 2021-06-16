@@ -20,6 +20,7 @@ const SectionBox = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  z-index: 0;
 `;
 const Title = styled.div`
   text-align: center;
@@ -100,6 +101,7 @@ const DialogAll = styled.div`
   border-radius: 0.3rem;
   background: #0d9e61;
   overflow: hidden;
+  z-index: 1;
 `;
 const DialogTitle = styled.div``;
 const DialogBottom = styled.div`
