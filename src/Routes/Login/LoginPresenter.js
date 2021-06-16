@@ -70,7 +70,7 @@ const InputOutside = styled.div`
   margin-bottom: 60px;
   display: inline-block;
 `;
-const LoginPresenter = () => (
+const LoginPresenter = (props) => (
   <>
     <Helmet>
       <title>Login | TurtleNeck</title>
@@ -81,10 +81,12 @@ const LoginPresenter = () => (
         <Title>Login</Title>
         <InputOutside>
           <InputDiv>
-            <InputClass>ID</InputClass> <InputMain></InputMain>
+            <InputClass>ID</InputClass>{" "}
+            <InputMain onChange={props.SetId}></InputMain>
           </InputDiv>
           <InputDiv>
-            <InputClass>PW</InputClass> <InputMain type="password"></InputMain>
+            <InputClass>PW</InputClass>{" "}
+            <InputMain type="password" onChange={props.SetPw}></InputMain>
           </InputDiv>
         </InputOutside>
 
