@@ -9,10 +9,10 @@ const Section = styled.div`
 const SectionBox = styled.div`
   display: inline-block;
   margin-top: 80px;
-  width: 400px;
-  height: 70vh;
+  width: 450px;
+  padding-bottom: 30px;
   margin-top: 60px;
-  border-radius: 30px;
+  border-radius: 40px;
   border: white;
   box-shadow: 0px 1px 3px 1px gray;
 `;
@@ -51,17 +51,19 @@ const InputDiv = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  left: 0;
-  top: 0;
   width: 350px;
   height: 60px;
   border-bottom: 1px solid black;
 `;
 const BtnSignUpLink = styled.div`
   text-align: right;
-  margin-right: 30px;
+  margin-right: 50px;
   color: blue;
+`;
+const InputOutside = styled.div`
+  margin-top: 40px;
+  margin-bottom: 60px;
+  display: inline-block;
 `;
 const LoginPresenter = () => (
   <>
@@ -72,14 +74,14 @@ const LoginPresenter = () => (
     <Section>
       <SectionBox>
         <Title>Login</Title>
-        <div style={{ display: "inline-block" }}>
+        <InputOutside>
           <InputDiv>
             <InputClass>ID</InputClass> <Input></Input>
           </InputDiv>
-          <InputDiv style={{ marginBottom: "60px" }}>
+          <InputDiv>
             <InputClass>PW</InputClass> <Input type="password"></Input>
           </InputDiv>
-        </div>
+        </InputOutside>
 
         <BtnSignUp>LOG IN</BtnSignUp>
         <BtnSignUpLink>signup</BtnSignUpLink>
