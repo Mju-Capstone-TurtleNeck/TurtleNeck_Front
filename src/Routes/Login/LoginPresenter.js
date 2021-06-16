@@ -90,7 +90,7 @@ const LoginPresenter = (props) => (
           </InputDiv>
         </InputOutside>
 
-        <BtnSignUp>LOG IN</BtnSignUp>
+        <BtnSignUp onClick={props.LoginBtnClick}>LOG IN</BtnSignUp>
         <Link to="Signup" style={{ textDecoration: "none" }}>
           <BtnSignUpLink>signup</BtnSignUpLink>
         </Link>
