@@ -24,7 +24,7 @@ const Title = styled.div`
   font-size: 40px;
   font-weight: 600;
 `;
-const BtnSignUp = styled.button`
+const BtnLogin = styled.button`
   margin: 20px;
   width: 350px;
   height: 50px;
@@ -90,7 +90,9 @@ const LoginPresenter = (props) => (
           </InputDiv>
         </InputOutside>
 
-        <BtnSignUp onClick={props.LoginBtnClick}>LOG IN</BtnSignUp>
+        <BtnLogin onClick={props.LoginBtnClick} disabled={props.disabled}>
+          LOG IN
+        </BtnLogin>
         <Link to="Signup" style={{ textDecoration: "none" }}>
           <BtnSignUpLink>signup</BtnSignUpLink>
         </Link>

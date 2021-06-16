@@ -8,11 +8,14 @@ export default class extends React.Component {
     this.state = {
       id: "",
       password: "",
-      disabled: false,
+      disabled: true,
     };
   }
   SetId = (e) => {
     this.setState({ id: e.target.value });
+  };
+  SetPw = (e) => {
+    this.setState({ password: e.target.value });
   };
   LoginBtnClick = () => {
     alert(this.state.id, this.state.password);
