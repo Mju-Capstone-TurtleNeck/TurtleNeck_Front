@@ -94,7 +94,7 @@ const LoginPresenter = (props) => (
           LOG IN
         </BtnLogin>
         <Link to="Signup" style={{ textDecoration: "none" }}>
-          <BtnSignUpLink>signup</BtnSignUpLink>
+          <BtnSignUpLink>Signup</BtnSignUpLink>
         </Link>
       </SectionBox>
     </Section>

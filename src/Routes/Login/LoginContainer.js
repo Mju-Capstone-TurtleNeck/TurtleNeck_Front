@@ -20,12 +20,14 @@ export default class extends React.Component {
     console.log(this.state.id, this.state.password, this.state.disabled);
   };
   SetId = (e) => {
-    this.setState({ id: e.target.value });
-    this.LoginBtnActive();
+    this.setState({ id: e.target.value }, () => {
+      this.LoginBtnActive();
+    });
   };
   SetPw = (e) => {
-    this.setState({ password: e.target.value });
-    this.LoginBtnActive();
+    this.setState({ password: e.target.value }, () => {
+      this.LoginBtnActive();
+    });
   };
   LoginBtnClick = () => {
     alert(this.state.id + " " + this.state.password);
