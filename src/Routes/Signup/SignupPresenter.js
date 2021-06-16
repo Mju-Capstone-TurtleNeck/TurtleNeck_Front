@@ -9,14 +9,17 @@ const Section = styled.div`
 `;
 const SectionBox = styled.div`
   display: inline-block;
-  margin-top: 80px;
   width: 450px;
   padding-bottom: 30px;
-  margin-top: 60px;
   border-radius: 40px;
   font-weight: 550;
   border: white;
   box-shadow: 0px 1px 3px 1px gray;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 `;
 const Title = styled.div`
   text-align: center;
