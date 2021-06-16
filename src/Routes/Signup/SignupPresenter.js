@@ -29,7 +29,7 @@ const Title = styled.div`
 `;
 const Input1 = styled.input`
   font-size: 20px;
-  width: 380px;
+  width: 100%;
   height: 40px;
   border: white;
   border-radius: 3px;
@@ -58,7 +58,7 @@ const Need = styled.p`
 `;
 const BtnSignUp = styled.button`
   margin: 20px;
-  width: 400px;
+  width: 90%;
   height: 50px;
   color: white;
   border: white;
@@ -90,7 +90,6 @@ const Terms = styled.span`
   color: blue;
 `;
 const DialogAll = styled.div`
-  position: fixed;
   width: 500px;
   height: 450px;
   margin: 0 auto;
@@ -101,6 +100,11 @@ const DialogAll = styled.div`
   border-radius: 0.3rem;
   background: #0d9e61;
   overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   z-index: 1;
 `;
 const DialogTitle = styled.div``;
