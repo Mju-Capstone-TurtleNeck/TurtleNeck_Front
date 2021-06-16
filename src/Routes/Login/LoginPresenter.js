@@ -17,17 +17,17 @@ const SectionBox = styled.div`
   box-shadow: 0px 1px 3px 1px gray;
 `;
 const Title = styled.div`
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 600;
 `;
 const BtnSignUp = styled.button`
   margin: 20px;
   width: 350px;
-  height: 40px;
+  height: 50px;
   color: white;
   border: white;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 23px;
   background: ${(props) => (props.disabled ? "#CAE9DA" : "#0D9E61")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 `;
@@ -43,7 +43,7 @@ const Input = styled.input`
   }
 `;
 const InputClass = styled.div`
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 600;
   vertical-align: -10px;
 `;
@@ -57,6 +57,11 @@ const InputDiv = styled.div`
   width: 350px;
   height: 60px;
   border-bottom: 1px solid black;
+`;
+const BtnSignUpLink = styled.div`
+  text-align: right;
+  margin-right: 30px;
+  color: blue;
 `;
 const LoginPresenter = () => (
   <>
@@ -77,7 +82,7 @@ const LoginPresenter = () => (
         </div>
 
         <BtnSignUp>LOG IN</BtnSignUp>
-        <div>signup</div>
+        <BtnSignUpLink>signup</BtnSignUpLink>
       </SectionBox>
     </Section>
     <Footer />
