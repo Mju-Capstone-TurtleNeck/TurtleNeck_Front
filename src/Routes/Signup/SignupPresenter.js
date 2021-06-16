@@ -90,14 +90,14 @@ const Terms = styled.span`
   color: blue;
 `;
 const DialogAll = styled.div`
-  width: 500px;
-  height: 450px;
+  width: 600px;
+  height: 600px;
   margin: 0 auto;
   left: 0;
   right: 0;
   top: 130px;
   bottom: 0;
-  border-radius: 0.3rem;
+  border-radius: 10px;
   background: #0d9e61;
   overflow: hidden;
   position: absolute;
@@ -106,13 +106,14 @@ const DialogAll = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1;
+  border: 2px solid #0d9e61;
 `;
 const DialogTitle = styled.div``;
 const DialogBottom = styled.div`
   height: 30px;
 `;
 const DialogSection = styled.div`
-  height: 400px;
+  height: 550px;
   background: #cae9da;
 `;
 const BtnClose = styled.button`
@@ -123,7 +124,10 @@ const ZipDialog = (props) => {
     <DialogAll>
       <DialogTitle>우편번호 검색</DialogTitle>
       <DialogSection>
-        <DaumPostcode onComplete={(data) => props.select(data)} />
+        <DaumPostcode
+          onComplete={(data) => props.select(data)}
+          style={{ height: "550px" }}
+        />
         <DialogBottom>
           <BtnClose onClick={props.close}>닫기</BtnClose>
         </DialogBottom>
