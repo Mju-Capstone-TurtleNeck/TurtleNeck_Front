@@ -7,14 +7,17 @@ const Section = styled.div`
   text-align: center;
 `;
 const SectionBox = styled.div`
+  vertical-align: -30px;
   display: inline-block;
-  margin-top: 80px;
   width: 450px;
   padding-bottom: 30px;
-  margin-top: 60px;
   border-radius: 40px;
   border: white;
   box-shadow: 0px 1px 3px 1px gray;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 const Title = styled.div`
   font-size: 40px;
@@ -31,11 +34,11 @@ const BtnSignUp = styled.button`
   background: ${(props) => (props.disabled ? "#CAE9DA" : "#0D9E61")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 `;
-const Input = styled.input`
+const InputMain = styled.input`
   font-size: 20px;
   display: flex;
   width: 280px;
-  height: 30px;
+  height: 50px;
   border: none;
   align: right;
   &:focus {
@@ -59,6 +62,7 @@ const BtnSignUpLink = styled.div`
   text-align: right;
   margin-right: 50px;
   color: blue;
+  cursor: pointer;
 `;
 const InputOutside = styled.div`
   margin-top: 40px;
@@ -76,10 +80,10 @@ const LoginPresenter = () => (
         <Title>Login</Title>
         <InputOutside>
           <InputDiv>
-            <InputClass>ID</InputClass> <Input></Input>
+            <InputClass>ID</InputClass> <InputMain></InputMain>
           </InputDiv>
           <InputDiv>
-            <InputClass>PW</InputClass> <Input type="password"></Input>
+            <InputClass>PW</InputClass> <InputMain type="password"></InputMain>
           </InputDiv>
         </InputOutside>
 
