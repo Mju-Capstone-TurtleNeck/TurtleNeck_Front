@@ -3,7 +3,7 @@ import SignupPresenter from "./SignupPresenter";
 export default class extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.SignupBtnClick = this.SignupBtnClick.bind(this);
+    // this.SignupBtnClick = this.SignupBtnClick.bind(this);
     this.state = {
       id: "",
       password: "",
