@@ -20,6 +20,14 @@ export default class extends React.Component {
   LoginBtnClick = () => {
     alert(this.state.id, this.state.password);
   };
+  SignupBtnActive() {
+    if (this.state.id !== "" && this.state.password !== "") {
+      this.setState({ disabled: false });
+    } else {
+      this.setState({ disabled: true });
+    }
+    console.log(this.state.disabled);
+  }
   render() {
     const { id, password, disabled } = this.state;
     return (
