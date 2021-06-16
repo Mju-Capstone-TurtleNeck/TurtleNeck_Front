@@ -4,30 +4,33 @@ import LoginPresenter from "./LoginPresenter";
 export default class extends React.Component {
   constructor(props, context) {
     super(props, context);
-
+    // this.LoginBtnClick = this.LoginBtnClick.bind(this);
     this.state = {
       id: "",
       password: "",
       disabled: true,
     };
   }
-  SetId = (e) => {
-    this.setState({ id: e.target.value });
-  };
-  SetPw = (e) => {
-    this.setState({ password: e.target.value });
-  };
-  LoginBtnClick = () => {
-    alert(this.state.id, this.state.password);
-  };
-  SignupBtnActive() {
+  LoginBtnActive = () => {
     if (this.state.id !== "" && this.state.password !== "") {
       this.setState({ disabled: false });
     } else {
       this.setState({ disabled: true });
     }
-    console.log(this.state.disabled);
-  }
+    console.log(this.state.id, this.state.password, this.state.disabled);
+  };
+  SetId = (e) => {
+    this.setState({ id: e.target.value });
+    this.LoginBtnActive();
+  };
+  SetPw = (e) => {
+    this.setState({ password: e.target.value });
+    this.LoginBtnActive();
+  };
+  LoginBtnClick = () => {
+    alert(this.state.id + " " + this.state.password);
+  };
+
   render() {
     const { id, password, disabled } = this.state;
     return (
@@ -37,6 +40,7 @@ export default class extends React.Component {
         disabled={disabled}
         LoginBtnClick={this.LoginBtnClick}
         SetId={this.SetId}
+        SetPw={this.SetPw}
       />
     );
   }
