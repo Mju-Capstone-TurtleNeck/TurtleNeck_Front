@@ -10,22 +10,22 @@ const Section = styled.div`
 const SectionBox = styled.div`
   display: inline-block;
   margin-top: 80px;
-  width: 400px;
-  height: 80vh;
+  width: 450px;
+  height: 85vh;
   margin-top: 60px;
-  border-radius: 30px;
+  border-radius: 40px;
   font-weight: 550;
   border: white;
   box-shadow: 0px 1px 3px 1px gray;
 `;
 const Title = styled.div`
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 500;
 `;
 const Input1 = styled.input`
   font-size: 20px;
-  width: 330px;
+  width: 380px;
   height: 40px;
   border: white;
   border-radius: 3px;
@@ -54,12 +54,12 @@ const Need = styled.p`
 `;
 const BtnSignUp = styled.button`
   margin: 20px;
-  width: 350px;
-  height: 40px;
+  width: 400px;
+  height: 50px;
   color: white;
   border: white;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 23px;
   background: ${(props) => (props.disabled ? "#CAE9DA" : "#0D9E61")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 `;
