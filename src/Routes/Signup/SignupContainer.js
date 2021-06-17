@@ -47,7 +47,6 @@ export default class extends React.Component {
     } else {
       this.setState({ disabled: true });
     }
-    console.log(this.state.disabled);
   }
   SetTermFirst = (e) => {
     this.setState({ term1: e.target.checked }, () => {

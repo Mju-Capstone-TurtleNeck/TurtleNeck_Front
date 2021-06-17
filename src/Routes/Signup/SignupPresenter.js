@@ -4,6 +4,14 @@ import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import styled from "styled-components";
 import DaumPostcode from "react-daum-postcode";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Paper from "@material-ui/core/Paper";
+import Draggable from "react-draggable";
 const Section = styled.div`
   text-align: center;
 `;
@@ -89,72 +97,96 @@ const Terms = styled.span`
   font-size: 11px;
   color: blue;
 `;
-const DialogAll = styled.div`
-  width: 600px;
-  height: 600px;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  top: 130px;
-  bottom: 0;
-  border-radius: 10px;
-  background: #0d9e61;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 1;
-  border: 2px solid #0d9e61;
-`;
-const DialogTitle = styled.div``;
-const DialogBottom = styled.div`
-  height: 30px;
-`;
-const DialogSection = styled.div`
-  height: 550px;
-  background: #cae9da;
-`;
-const BtnClose = styled.button`
-  cursor: pointer;
-`;
+
+function PaperComponent(props) {
+  return (
+    <Draggable
+      handle="#draggable-dialog-title"
+      cancel={'[class*="MuiDialogContent-root"]'}
+    >
+      <Paper {...props} />
+    </Draggable>
+  );
+}
 const ZipDialog = (props) => {
   return (
-    <DialogAll>
-      <DialogTitle>우편번호 검색</DialogTitle>
-      <DialogSection>
-        <DaumPostcode
-          onComplete={(data) => props.select(data)}
-          style={{ height: "550px" }}
-        />
-        <DialogBottom>
-          <BtnClose onClick={props.close}>닫기</BtnClose>
-        </DialogBottom>
-      </DialogSection>
-    </DialogAll>
+    <div>
+      <Dialog
+        open={props.open}
+        onClose={props.setClose}
+        PaperComponent={PaperComponent}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+          우편번호 찾기
+        </DialogTitle>
+        <DialogContent>
+          <DaumPostcode
+            onComplete={(data) => props.select(data)}
+            style={{ height: "550px", width: "550px" }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={props.setClose} color="primary">
+            확인
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 const Term1Dialog = (props) => {
   return (
-    <DialogAll>
-      <DialogTitle>이용약관 </DialogTitle>
-      <DialogSection></DialogSection>
-      <DialogBottom>
-        <BtnClose onClick={props.close}>닫기</BtnClose>
-      </DialogBottom>
-    </DialogAll>
+    <div>
+      <Dialog
+        open={props.open}
+        onClose={props.setClose}
+        PaperComponent={PaperComponent}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+          이용약관
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To subscribe to this website, please enter your email address here.
+            We will send updates occasionally.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={props.setClose} color="primary">
+            확인
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 const Term2Dialog = (props) => {
   return (
-    <DialogAll>
-      <DialogTitle>개인정보 수집 및 이용 동의 </DialogTitle>
-      <DialogSection></DialogSection>
-      <DialogBottom>
-        <BtnClose onClick={props.close}>닫기</BtnClose>
-      </DialogBottom>
-    </DialogAll>
+    <div>
+      <Dialog
+        open={props.open}
+        onClose={props.setClose}
+        PaperComponent={PaperComponent}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+          개인정보 수집 및 이용
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To subscribe to this website, please enter your email address here.
+            We will send updates occasionally.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={props.setClose} color="primary">
+            확인
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 };
 const SignupPresenter = (props) => (
@@ -163,12 +195,14 @@ const SignupPresenter = (props) => (
       <title>Signup | TurtleNeck</title>
     </Helmet>
     <Header />
-    <Section onClick={props.CloseDialog}>
-      {props.ZipDialog ? (
-        <ZipDialog close={props.CloseDialog} select={props.SelectZip} />
-      ) : null}
-      {props.Term1Dialog ? <Term1Dialog close={props.CloseDialog} /> : null}
-      {props.Term2Dialog ? <Term2Dialog close={props.CloseDialog} /> : null}
+    <Section>
+      <ZipDialog
+        open={props.ZipDialog}
+        setClose={props.CloseDialog}
+        select={props.SelectZip}
+      />
+      <Term1Dialog open={props.Term1Dialog} setClose={props.CloseDialog} />
+      <Term2Dialog open={props.Term2Dialog} setClose={props.CloseDialog} />
       <SectionBox>
         <Title>회원가입</Title>
         <div
