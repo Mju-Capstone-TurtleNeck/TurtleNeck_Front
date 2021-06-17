@@ -18,6 +18,7 @@ export default class extends React.Component {
       ZipDialog: false,
       Term1Dialog: false,
       Term2Dialog: false,
+      overlap: true,
     };
   }
   SetId = (e) => {
@@ -59,26 +60,57 @@ export default class extends React.Component {
     });
   };
   SignupBtnClick = () => {
-    const { id, password, passwordconfirm, birth, email, zip, address } =
-      this.state;
+    const {
+      id,
+      password,
+      passwordconfirm,
+      birth,
+      email,
+      zip,
+      address,
+      overlap,
+    } = this.state;
+
     if (id === "") {
       alert("아이디를 입력하세요.");
+      return;
+    }
+    if (overlap) {
+      alert("아이디 중복상태를 확인하세요.");
       return;
     }
     if (password === "") {
       alert("비밀번호를 입력하세요.");
       return;
     }
-    if (passwordconfirm === "") {
-      alert("비밀번호를 확인하세요.");
+    const regex1 = /^[a-z0-9+]{9,15}$/;
+    if (!regex1.test(password)) {
+      alert(
+        "비밀번호는 9자리 이상 15자리 이하입니다.\n적어도 하나의 소문자와 숫자로 이루어져야 합니다."
+      );
       return;
     }
+    if (passwordconfirm === "") {
+      alert("비밀번호 확인을 입력하세요.");
+      return;
+    }
+    const regex2 =
+      /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
     if (birth === "") {
       alert("생년월일을 입력하세요");
       return;
     }
+    if (!regex2.test(birth)) {
+      alert("생년월일을 확인하세요.\nex)1998년2월24일 → 19980224");
+      return;
+    }
+    const regex3 = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+$/;
     if (email === "") {
       alert("이메일을 입력하세요");
+      return;
+    }
+    if (!regex3.test(email)) {
+      alert("이메일 형식이 올바르지 않습니다.");
       return;
     }
     if (zip === "") {
@@ -93,7 +125,18 @@ export default class extends React.Component {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
+
     alert("가입 승인????");
+  };
+  BtnOverlapClick = () => {
+    const regex = /^[a-z0-9+]{5,12}$/;
+    if (regex.test(this.state.id)) {
+      alert("백엔드 연동 시 구현");
+    } else {
+      alert(
+        "아이디는 5자리 이상 13자리 이하입니다.\n적어도 하나의 소문자와 숫자로 이루어져야 합니다."
+      );
+    }
   };
   OpenZipDialog = () => {
     this.setState({ ZipDialog: true });
@@ -159,6 +202,7 @@ export default class extends React.Component {
         Term1Dialog={Term1Dialog}
         Term2Dialog={Term2Dialog}
         SelectZip={this.SelectZip}
+        BtnOverlapClick={this.BtnOverlapClick}
       />
     );
   }

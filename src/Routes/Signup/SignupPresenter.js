@@ -97,7 +97,21 @@ const Terms = styled.span`
   font-size: 11px;
   color: blue;
 `;
-
+const IdOverlap = styled.button`
+  margin-left: 3.98%;
+  width: 25%;
+  height: 42px;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+  border: white;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px 1px gray;
+  vertical-align: +2px;
+  &:hover {
+    background: #cae9da;
+  }
+`;
 function PaperComponent(props) {
   return (
     <Draggable
@@ -209,7 +223,8 @@ const SignupPresenter = (props) => (
           style={{ marginLeft: "30px", marginRight: "30px", textAlign: "left" }}
         >
           <Need>아이디</Need>
-          <Input1 onChange={(e) => props.SetId(e)} />
+          <Input1 onChange={(e) => props.SetId(e)} style={{ width: "70%" }} />
+          <IdOverlap onClick={props.BtnOverlapClick}>중복확인</IdOverlap>
           <Need>비밀번호</Need>
           <Input1 onChange={(e) => props.SetPw(e)} type="password" />
           <Need>비밀번호 확인</Need>
@@ -219,7 +234,6 @@ const SignupPresenter = (props) => (
           <Need>이메일</Need>
           <Input1 onChange={(e) => props.SetEmail(e)} />
           <Input2 style={{ marginLeft: 0 }} readOnly value={props.zip} />
-          {/* -<Input2 /> */}
           <BtnZip onClick={props.OpenZipDialog}>우편 번호</BtnZip>
           <Need>주소</Need>
           <Input1 onChange={(e) => props.SetAddr(e)} />
