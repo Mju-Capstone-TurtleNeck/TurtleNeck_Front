@@ -9,18 +9,23 @@ const Section = styled.div`
 `;
 const SectionBox = styled.div`
   display: inline-block;
-  margin-top: 80px;
-  width: 600px;
+  width: 700px;
   background: #bdecb6;
-  height: 75vh;
+  height: 700px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 `;
 const Title = styled.h1`
-  margin: 30px;
+  font-size: 40px;
+  margin: 50px;
   margin-bottom: 0;
 `;
 const MiddleBox = styled.div`
-  width: 600px;
-  height: 55vh;
+  width: 700px;
+  height: 500px;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
@@ -28,15 +33,14 @@ const MiddleBox = styled.div`
 
 const Button = styled.button`
   margin-top: 0px;
-  padding: 5px;
+  padding: 10px;
   padding-right: 25px;
   padding-left: 25px;
-  font-size: 20px;
+  font-size: 25px;
   text-align: left;
   border-radius: 6px;
   border: 0px;
   background: white;
-  font-size: 20px;
   cursor: pointer;
 `;
 

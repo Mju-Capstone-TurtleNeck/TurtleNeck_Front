@@ -13,7 +13,7 @@ const Photo = styled.div`
   background: white;
   width: 80%;
   display: inline-block;
-  height: 45vh;
+  height: 460px;
   cursor: pointer;
   &:hover {
     color: red;
@@ -22,25 +22,30 @@ const Photo = styled.div`
 `;
 const BtnFind = styled.button`
   background: green;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 0px;
-  padding: 3px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 5px;
+  padding-left: 45px;
+  padding-right: 45px;
   color: white;
   cursor: pointer;
   margin: 10px;
+  font-size: 17px;
 `;
 const Plus = styled.p`
   display: inline-block;
   font-size: 100px;
   margin: 0;
-  margin-top: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 `;
 
 const Content = styled.h2`
   margin: 20px;
-  font-size: 20px;
+  font-size: 25px;
   text-align: left;
 `;
 function Guide() {
@@ -76,7 +81,7 @@ class Check extends Component {
     reader.readAsDataURL(file);
   };
   render() {
-    var content = <Plus>+</Plus>;
+    var content;
     let profile_preview = null;
     if (this.state.file !== "") {
       profile_preview = (
@@ -116,7 +121,7 @@ class Check extends Component {
 function Result(props) {
   return (
     <div>
-      <h1 style={{ color: props.color }}>{props.progress}</h1>
+      <h1 style={{ color: props.color, margin: 0 }}>{props.progress}</h1>
       <p>거북목 교정 운동법</p>
       <Solution></Solution>
       <br />
@@ -131,7 +136,7 @@ const HomeContent = (props) => {
   return {
     0: <Guide />,
     1: <Check />,
-    2: <Result progress="양호" color="#66ff99" />,
+    2: <Result progress="주의" color="orange" />,
   }[props.id];
 };
 export default HomeContent;
