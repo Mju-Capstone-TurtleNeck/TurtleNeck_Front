@@ -47,11 +47,7 @@ export default class extends React.Component {
       this.SignupBtnActive();
     });
   };
-  SetZip = (e) => {
-    this.setState({ zip: e.target.value }, () => {
-      this.SignupBtnActive();
-    });
-  };
+
   SetAddr = (e) => {
     this.setState({ address: e.target.value }, () => {
       this.SignupBtnActive();
@@ -156,7 +152,9 @@ export default class extends React.Component {
     if (this.state.Term2Dialog) this.setState({ Term2Dialog: false });
   };
   SelectZip = (data) => {
-    this.setState({ zip: data.zonecode });
+    this.setState({ zip: data.zonecode }, () => {
+      this.SignupBtnActive();
+    });
     this.CloseDialog();
   };
   componentDidUpdate(prevProps, prevState) {
@@ -212,7 +210,6 @@ export default class extends React.Component {
         SetPwConfirm={this.SetPwConfirm}
         SetBirth={this.SetBirth}
         SetEmail={this.SetEmail}
-        SetZip={this.SetZip}
         SetAddr={this.SetAddr}
         SetTermFirst={this.SetTermFirst}
         SetTermSecond={this.SetTermSecond}
