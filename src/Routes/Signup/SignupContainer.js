@@ -19,31 +19,69 @@ export default class extends React.Component {
       Term1Dialog: false,
       Term2Dialog: false,
       overlap: true,
+      equal: false,
     };
   }
   SetId = (e) => {
-    this.setState({ id: e.target.value });
+    this.setState({ id: e.target.value }, () => {
+      this.SignupBtnActive();
+    });
   };
   SetPw = (e) => {
-    this.setState({ password: e.target.value });
+    this.setState({ password: e.target.value }, () => {
+      this.SignupBtnActive();
+    });
   };
   SetPwConfirm = (e) => {
-    this.setState({ passwordconfirm: e.target.value });
+    this.setState({ passwordconfirm: e.target.value }, () => {
+      this.SignupBtnActive();
+    });
   };
   SetBirth = (e) => {
-    this.setState({ birth: e.target.value });
+    this.setState({ birth: e.target.value }, () => {
+      this.SignupBtnActive();
+    });
   };
   SetEmail = (e) => {
-    this.setState({ email: e.target.value });
+    this.setState({ email: e.target.value }, () => {
+      this.SignupBtnActive();
+    });
   };
   SetZip = (e) => {
-    this.setState({ zip: e.target.value });
+    this.setState({ zip: e.target.value }, () => {
+      this.SignupBtnActive();
+    });
   };
   SetAddr = (e) => {
-    this.setState({ address: e.target.value });
+    this.setState({ address: e.target.value }, () => {
+      this.SignupBtnActive();
+    });
   };
   SignupBtnActive() {
-    if (this.state.term1 && this.state.term2) {
+    const {
+      id,
+      password,
+      passwordconfirm,
+      birth,
+      email,
+      zip,
+      address,
+      term1,
+      term2,
+      equal,
+    } = this.state;
+    if (
+      id !== "" &&
+      password !== "" &&
+      passwordconfirm !== "" &&
+      birth !== "" &&
+      email !== "" &&
+      zip !== "" &&
+      address !== "" &&
+      term1 &&
+      term2 &&
+      equal
+    ) {
       this.setState({ disabled: false });
     } else {
       this.setState({ disabled: true });
@@ -60,29 +98,13 @@ export default class extends React.Component {
     });
   };
   SignupBtnClick = () => {
-    const {
-      id,
-      password,
-      passwordconfirm,
-      birth,
-      email,
-      zip,
-      address,
-      overlap,
-    } = this.state;
+    const { password, birth, email, overlap } = this.state;
 
-    if (id === "") {
-      alert("아이디를 입력하세요.");
-      return;
-    }
     if (overlap) {
       alert("아이디 중복상태를 확인하세요.");
       return;
     }
-    if (password === "") {
-      alert("비밀번호를 입력하세요.");
-      return;
-    }
+
     const regex1 = /^[a-z0-9+]{9,15}$/;
     if (!regex1.test(password)) {
       alert(
@@ -90,10 +112,7 @@ export default class extends React.Component {
       );
       return;
     }
-    if (passwordconfirm === "") {
-      alert("비밀번호 확인을 입력하세요.");
-      return;
-    }
+
     const regex2 =
       /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
     if (birth === "") {
@@ -105,24 +124,8 @@ export default class extends React.Component {
       return;
     }
     const regex3 = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+$/;
-    if (email === "") {
-      alert("이메일을 입력하세요");
-      return;
-    }
     if (!regex3.test(email)) {
-      alert("이메일 형식이 올바르지 않습니다.");
-      return;
-    }
-    if (zip === "") {
-      alert("우편번호를 입력하세요");
-      return;
-    }
-    if (address === "") {
-      alert("주소를 입력하세요");
-      return;
-    }
-    if (password !== passwordconfirm) {
-      alert("비밀번호가 일치하지 않습니다.");
+      alert("이메일을 올바르게 입력하세요.");
       return;
     }
 
@@ -156,6 +159,22 @@ export default class extends React.Component {
     this.setState({ zip: data.zonecode });
     this.CloseDialog();
   };
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.passwordconfirm !== prevState.passwordconfirm ||
+      this.state.password !== prevState.password
+    ) {
+      if (this.state.password === this.state.passwordconfirm) {
+        this.setState({ equal: true }, () => {
+          this.SignupBtnActive();
+        });
+      } else {
+        this.setState({ equal: false }, () => {
+          this.SignupBtnActive();
+        });
+      }
+    }
+  }
   render() {
     const {
       id,
@@ -167,6 +186,7 @@ export default class extends React.Component {
       address,
       term1,
       term2,
+      equal,
       disabled,
       ZipDialog,
       Term1Dialog,
@@ -183,6 +203,7 @@ export default class extends React.Component {
         address={address}
         term1={term1}
         term2={term2}
+        equal={equal}
         SignupBtnClick={this.SignupBtnClick}
         SetId={this.SetId}
         SetPw={this.SetPw}

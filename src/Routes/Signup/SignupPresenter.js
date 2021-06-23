@@ -42,16 +42,14 @@ const Input1 = styled.input`
   border: white;
   border-radius: 3px;
   box-shadow: 0px 1px 3px 1px gray;
+  margin-bottom: 15px;
   &:focus {
     outline: none;
   }
-  margin-bottom: 15px;
 `;
 const Input2 = styled.input`
-  margin-top: 20px;
   margin-right: 5px;
   margin-left: 5px;
-  margin-bottom: 15px;
   &:focus {
     outline: none;
   }
@@ -59,6 +57,7 @@ const Input2 = styled.input`
   border-radius: 3px;
   box-shadow: 0px 1px 3px 1px gray;
   width: 80px;
+  margin-bottom: 15px;
   height: 40px;
 `;
 const Need = styled.p`
@@ -76,7 +75,7 @@ const BtnSignUp = styled.button`
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 `;
 const BtnZip = styled.button`
-  margin-top: 20px;
+  margin-top: 15px;
   margin-right: 5px;
   margin-left: 5px;
   width: 90px;
@@ -229,7 +228,28 @@ const SignupPresenter = (props) => (
           <Input1 onChange={(e) => props.SetPw(e)} type="password" />
           <Need>비밀번호 확인</Need>
           <Input1 onChange={(e) => props.SetPwConfirm(e)} type="password" />
-          <Need>생년월일</Need>
+          <div
+            style={{
+              fontSize: "12px",
+              float: "right",
+              bottom: "11px",
+              position: "relative",
+              color: props.equal ? "blue" : "red",
+            }}
+          >
+            {props.passwordconfirm === ""
+              ? ""
+              : props.equal
+              ? "비밀번호가 일치합니다"
+              : "비밀번호가 일치하지 않습니다"}
+          </div>
+          <Need>
+            생년월일
+            <span style={{ fontSize: "12px", color: "gray" }}>
+              {" "}
+              ex)19980224
+            </span>
+          </Need>
           <Input1 onChange={(e) => props.SetBirth(e)} />
           <Need>이메일</Need>
           <Input1 onChange={(e) => props.SetEmail(e)} />
