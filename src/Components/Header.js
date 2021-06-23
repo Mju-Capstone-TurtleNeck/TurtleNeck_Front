@@ -114,7 +114,7 @@ function GuidePresenter() {
           {["거북목 위험성", "교정 운동법", "이용 가이드"].map(
             (text, index) => (
               <Link
-                to={{ 0: "Danger", 1: "Exercise", 2: "Guide" }[index]}
+                to={{ 0: "Danger", 1: "Exercise", 2: "Home" }[index]}
                 style={{
                   textDecoration: "none",
                   color: "white",
