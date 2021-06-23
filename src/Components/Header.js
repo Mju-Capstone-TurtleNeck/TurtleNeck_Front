@@ -42,24 +42,17 @@ const RightMenu = styled.div`
 const LeftMenu = styled.div`
   width: 150px;
 `;
-const drawerWidth = "10%";
+const drawerWidth = "20%";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-  },
-
   hide: {
     display: "none",
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
   },
   drawerPaper: {
     background: "#0D9E61",
-    color: "white",
-    zIndex: 1000,
     width: drawerWidth,
   },
   drawerHeader: {
@@ -82,12 +75,10 @@ function GuidePresenter() {
   };
 
   return (
-    <div className={classes.root}>
+    <div>
       <div>
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
