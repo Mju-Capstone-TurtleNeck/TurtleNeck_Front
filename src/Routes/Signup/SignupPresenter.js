@@ -12,6 +12,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Paper from "@material-ui/core/Paper";
 import Draggable from "react-draggable";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 const Section = styled.div`
   text-align: center;
 `;
@@ -224,6 +226,29 @@ const SignupPresenter = (props) => (
           <Need>아이디</Need>
           <Input1 onChange={(e) => props.SetId(e)} style={{ width: "70%" }} />
           <IdOverlap onClick={props.BtnOverlapClick}>중복확인</IdOverlap>
+          <div
+            style={{
+              fontSize: "12px",
+              float: "right",
+              marginRight: "115px",
+              bottom: "11px",
+              position: "relative",
+              color: !props.overlap ? "blue" : "red",
+            }}
+          >
+            {props.id === "" ? "" : "중복확인"}
+            {props.id === "" ? (
+              ""
+            ) : props.overlap ? (
+              <HighlightOffIcon
+                style={{ fontSize: 14, verticalAlign: "-2px" }}
+              />
+            ) : (
+              <CheckCircleOutlineIcon
+                style={{ fontSize: 14, verticalAlign: "-2px" }}
+              />
+            )}
+          </div>
           <Need>비밀번호</Need>
           <Input1 onChange={(e) => props.SetPw(e)} type="password" />
           <Need>비밀번호 확인</Need>

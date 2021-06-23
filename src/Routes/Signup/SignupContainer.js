@@ -191,6 +191,7 @@ export default class extends React.Component {
       ZipDialog,
       Term1Dialog,
       Term2Dialog,
+      overlap,
     } = this.state;
     return (
       <SignupPresenter
@@ -204,6 +205,7 @@ export default class extends React.Component {
         term1={term1}
         term2={term2}
         equal={equal}
+        overlap={overlap}
         SignupBtnClick={this.SignupBtnClick}
         SetId={this.SetId}
         SetPw={this.SetPw}
