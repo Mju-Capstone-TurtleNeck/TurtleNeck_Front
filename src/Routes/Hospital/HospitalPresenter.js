@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import { FiSearch } from "react-icons/fi";
+import { PropTypes } from "prop-types";
 
 const MapContainer = styled.div`
   position: fixed;
@@ -40,7 +41,7 @@ const SearchButton = styled.button`
   background-color: white;
   font-size: 15px;
 `;
-const HospitalPresenter = () => (
+const HospitalPresenter = (props) => (
   <>
     <Helmet>
       <title>Hospital | TurtleNeck</title>
@@ -48,13 +49,25 @@ const HospitalPresenter = () => (
     <Header />
     <MapContainer id="Map" />
     <SearchContainer>
-      <SearchInput placeholder="동,읍,면 입력"></SearchInput>
-      <SearchButton>
+      <SearchInput
+        placeholder="동,읍,면 입력"
+        value={props.Keyword}
+        id="keyword"
+        onChange={props.changeKeyword}
+      />
+      <SearchButton onClick={() => props.setKeyword()}>
         <FiSearch />
       </SearchButton>
     </SearchContainer>
     <Footer />
   </>
 );
+
+HospitalPresenter.propTypes = {
+  Keyword: PropTypes.string,
+  Search: PropTypes.bool,
+  changeKeyword: PropTypes.func,
+  setKeyword: PropTypes.func,
+};
 
 export default HospitalPresenter;
