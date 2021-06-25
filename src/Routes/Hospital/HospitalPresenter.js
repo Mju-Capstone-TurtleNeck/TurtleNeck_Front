@@ -50,7 +50,7 @@ const HospitalPresenter = (props) => (
     <MapContainer id="Map" />
     <SearchContainer>
       <SearchInput
-        placeholder="동,읍,면 입력"
+        placeholder="ex.용인시 남동"
         value={props.Keyword}
         id="keyword"
         onChange={props.changeKeyword}
