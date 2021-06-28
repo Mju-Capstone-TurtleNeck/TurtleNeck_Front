@@ -76,7 +76,7 @@ const LoginPresenter = (props) => (
       <title>Login | TurtleNeck</title>
     </Helmet>
     <Header />
-    <Section>
+    <Section onKeyPress={props.onKeyPress}>
       <SectionBox>
         <Title>Login</Title>
         <InputOutside>
