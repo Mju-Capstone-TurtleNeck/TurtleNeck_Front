@@ -1,6 +1,5 @@
 import React from "react";
 import SignupPresenter from "./SignupPresenter";
-
 export default class extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -19,11 +18,10 @@ export default class extends React.Component {
       ZipDialog: false,
       Term1Dialog: false,
       Term2Dialog: false,
-      overlap: false,
+      overlap: true,
       equal: false,
     };
   }
-
   SetId = (e) => {
     this.setState({ id: e.target.value }, () => {
       this.SignupBtnActive();
@@ -96,7 +94,7 @@ export default class extends React.Component {
     });
   };
   SignupBtnClick = () => {
-    const { id, password, birth, email, overlap, zip, address } = this.state;
+    const { password, birth, email, overlap } = this.state;
 
     if (overlap) {
       alert("아이디 중복상태를 확인하세요.");
@@ -121,41 +119,24 @@ export default class extends React.Component {
       alert("생년월일을 확인하세요.\nex)1998년2월24일 → 19980224");
       return;
     }
-    const regex3 =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    const regex3 = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+$/;
     if (!regex3.test(email)) {
       alert("이메일을 올바르게 입력하세요.");
       return;
     }
-    //완료 시
-    return this.props
-      .registerRequest(id, password, birth, email, zip, address)
-      .then(() => {
-        if (this.props.status === "SUCCESS") {
-          alert("회원가입 되었습니다. 로그인하세요");
-          this.props.history.push({
-            pathname: "/Login",
-            props: { id: id, password: password },
-          });
-          return true;
-        } else {
-          console.log(this.props);
-          alert("오류");
-          return false;
-        }
-      });
+
+    alert("가입 승인????");
   };
   BtnOverlapClick = () => {
     const regex = /^[a-z0-9+]{5,12}$/;
     if (regex.test(this.state.id)) {
-      alert("아이디 중복????");
+      alert("백엔드 연동 시 구현");
     } else {
       alert(
         "아이디는 5자리 이상 13자리 이하입니다.\n적어도 하나의 소문자와 숫자로 이루어져야 합니다."
       );
     }
   };
-
   OpenZipDialog = () => {
     this.setState({ ZipDialog: true });
   };
