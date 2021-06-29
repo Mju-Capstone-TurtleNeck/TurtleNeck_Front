@@ -82,11 +82,15 @@ const LoginPresenter = (props) => (
         <InputOutside>
           <InputDiv>
             <InputClass>ID</InputClass>{" "}
-            <InputMain onChange={props.SetId}></InputMain>
+            <InputMain onChange={props.SetId} value={props.id}></InputMain>
           </InputDiv>
           <InputDiv>
             <InputClass>PW</InputClass>{" "}
-            <InputMain type="password" onChange={props.SetPw}></InputMain>
+            <InputMain
+              type="password"
+              onChange={props.SetPw}
+              value={props.password}
+            ></InputMain>
           </InputDiv>
         </InputOutside>
 
