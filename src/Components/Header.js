@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -128,7 +128,12 @@ class Header extends Component {
     super(props, context);
     this.state = { login: false };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    if (localStorage.getItem("token") == null) this.setState({ login: false });
+    else {
+      this.setState({ login: true });
+    }
+  }
   render() {
     return (
       <HeaderContainer>
@@ -140,14 +145,20 @@ class Header extends Component {
         </Link>
 
         {this.state.login ? (
-          <RightMenu>
+          <span>
+            {console.log(localStorage.getItem("token"))}
             <p
-              style={{ paddingLeft: "80px", cursor: "pointer" }}
-              onClick={this.setState({ login: false })}
+              style={{ paddingLeft: "80px", cursor: "pointer", color: "white" }}
+              onClick={() => {
+                alert("로그아웃 되었습니다.");
+                localStorage.removeItem("token");
+                this.setState({ login: false });
+                this.props.history.push("/Login");
+              }}
             >
               로그아웃
             </p>
-          </RightMenu>
+          </span>
         ) : (
           <RightMenu>
             <Link to="Login" style={{ textDecoration: "none" }}>
@@ -171,4 +182,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

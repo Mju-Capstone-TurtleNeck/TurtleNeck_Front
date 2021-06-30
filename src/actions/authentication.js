@@ -22,14 +22,17 @@ export function registerRequest(id, password, birth, email, zip, address) {
         address: address,
       })
       .then((response) => {
-        if (response.data.success) {
-          console.log("success");
+        if (response.status === 200) {
           // SUCCEED
+          console.log(response.data);
           dispatch(registerSuccess(id));
         } else {
           // FAILED
           dispatch(registerFailure());
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 }
@@ -40,15 +43,23 @@ export function loginRequest(id, password) {
 
     // API REQUEST
 
-    return axios.post("/api/users/login", { id, password }).then((response) => {
-      if (response.data.loginSuccess) {
-        // SUCCEED
-        dispatch(loginSuccess(id));
-      } else {
-        // FAILED
-        dispatch(loginFailure());
-      }
-    });
+    return axios
+      .post("http://localhost:5000/api/users/login", { id, password })
+      .then((response) => {
+        if (response.status === 200) {
+          // SUCCEED
+          console.log(response);
+          localStorage.setItem("token", response.data.token);
+          dispatch(loginSuccess(id));
+        } else {
+          // FAILED
+          console.log("fail");
+          dispatch(loginFailure());
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 }
 export function register() {

@@ -1,6 +1,6 @@
 import React from "react";
 import SignupPresenter from "./SignupPresenter";
-
+import axios from "axios";
 export default class extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -19,7 +19,7 @@ export default class extends React.Component {
       ZipDialog: false,
       Term1Dialog: false,
       Term2Dialog: false,
-      overlap: false,
+      overlap: true,
       equal: false,
     };
   }
@@ -148,7 +148,16 @@ export default class extends React.Component {
   BtnOverlapClick = () => {
     const regex = /^[a-z0-9+]{5,12}$/;
     if (regex.test(this.state.id)) {
-      alert("아이디 중복????");
+      axios
+        .post("/api/users/id-check", { id: this.state.id })
+        .then(() => {
+          alert("사용 가능한 아이디입니다!");
+          this.setState({ overlap: false });
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("이미 사용중인 아이디입니다.");
+        });
     } else {
       alert(
         "아이디는 5자리 이상 13자리 이하입니다.\n적어도 하나의 소문자와 숫자로 이루어져야 합니다."

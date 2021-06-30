@@ -45,9 +45,10 @@ export default class extends React.Component {
     return this.props
       .loginRequest(this.state.id, this.state.password)
       .then(() => {
+        console.log(this.props);
         if (this.props.status === "SUCCESS") {
           alert("로그인 되었습니다");
-          this.props.history.push({ pathname: "/", state: { login: true } });
+          this.props.history.push("/");
           return true;
         } else {
           alert("회원정보가 일치하지 않습니다");
