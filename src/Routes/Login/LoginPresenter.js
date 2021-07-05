@@ -62,13 +62,16 @@ const InputDiv = styled.div`
 const BtnSignUpLink = styled.div`
   text-align: right;
   margin-right: 50px;
-  color: blue;
-  cursor: pointer;
 `;
 const InputOutside = styled.div`
   margin-top: 40px;
   margin-bottom: 60px;
   display: inline-block;
+`;
+const SideButton = styled.span`
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
 `;
 const LoginPresenter = (props) => (
   <>
@@ -82,24 +85,27 @@ const LoginPresenter = (props) => (
         <InputOutside>
           <InputDiv>
             <InputClass>ID</InputClass>{" "}
-            <InputMain onChange={props.SetId} value={props.id}></InputMain>
+            <InputMain onChange={props.SetId}></InputMain>
           </InputDiv>
           <InputDiv>
             <InputClass>PW</InputClass>{" "}
-            <InputMain
-              type="password"
-              onChange={props.SetPw}
-              value={props.password}
-            ></InputMain>
+            <InputMain type="password" onChange={props.SetPw}></InputMain>
           </InputDiv>
         </InputOutside>
 
         <BtnLogin onClick={props.LoginBtnClick} disabled={props.disabled}>
           LOG IN
         </BtnLogin>
-        <Link to="Signup" style={{ textDecoration: "none" }}>
-          <BtnSignUpLink>Signup</BtnSignUpLink>
-        </Link>
+
+        <BtnSignUpLink>
+          <Link to="Find" style={{ textDecoration: "none" }}>
+            <SideButton>Find ID/PW</SideButton>
+          </Link>
+          <span style={{ margin: "10px" }}></span>
+          <Link to="Signup" style={{ textDecoration: "none" }}>
+            <SideButton>Signup</SideButton>
+          </Link>
+        </BtnSignUpLink>
       </SectionBox>
     </Section>
     <Footer />
