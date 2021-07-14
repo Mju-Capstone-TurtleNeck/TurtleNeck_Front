@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 function GuidePresenter() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -74,6 +75,7 @@ function GuidePresenter() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
 
   return (
     <div>
@@ -126,6 +128,7 @@ function GuidePresenter() {
 class Header extends Component {
   constructor(props, context) {
     super(props, context);
+
     this.state = { login: false };
   }
   componentDidMount() {
@@ -133,6 +136,7 @@ class Header extends Component {
     else {
       this.setState({ login: true });
     }
+
   }
   render() {
     return (
@@ -145,6 +149,7 @@ class Header extends Component {
         </Link>
 
         {this.state.login ? (
+
           <span>
             {console.log(localStorage.getItem("token"))}
             <p
@@ -159,6 +164,7 @@ class Header extends Component {
               로그아웃
             </p>
           </span>
+
         ) : (
           <RightMenu>
             <Link to="Login" style={{ textDecoration: "none" }}>

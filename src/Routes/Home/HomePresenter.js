@@ -17,6 +17,7 @@ const SectionBox = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  z-index: -1;
 `;
 const Title = styled.h1`
   font-size: 40px;
