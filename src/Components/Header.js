@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
@@ -63,6 +63,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end",
   },
 }));
+
+
 function GuidePresenter() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -73,6 +75,7 @@ function GuidePresenter() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
 
   return (
     <div>
@@ -125,9 +128,16 @@ function GuidePresenter() {
 class Header extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { login: true };
-  }
 
+    this.state = { login: false };
+  }
+  componentDidMount() {
+    if (localStorage.getItem("token") == null) this.setState({ login: false });
+    else {
+      this.setState({ login: true });
+    }
+
+  }
   render() {
     return (
       <HeaderContainer>
@@ -139,14 +149,22 @@ class Header extends Component {
         </Link>
 
         {this.state.login ? (
-          <RightMenu>
+
+          <span>
+            {console.log(localStorage.getItem("token"))}
             <p
-              style={{ paddingLeft: "80px", cursor: "pointer" }}
-              onClick={this.setState({ login: false })}
+              style={{ paddingLeft: "80px", cursor: "pointer", color: "white" }}
+              onClick={() => {
+                alert("로그아웃 되었습니다.");
+                localStorage.removeItem("token");
+                this.setState({ login: false });
+                this.props.history.push("/Login");
+              }}
             >
               로그아웃
             </p>
-          </RightMenu>
+          </span>
+
         ) : (
           <RightMenu>
             <Link to="Login" style={{ textDecoration: "none" }}>
@@ -170,4 +188,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
