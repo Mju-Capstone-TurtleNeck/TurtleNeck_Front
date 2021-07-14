@@ -1,6 +1,7 @@
 /*global kakao*/
 import React from "react";
 import HospitalPresenter from "./HospitalPresenter";
+import "./Hospital.css";
 
 export default class extends React.Component {
   constructor(props) {
@@ -92,26 +93,23 @@ export default class extends React.Component {
 
       // 마커에 클릭이벤트를 등록합니다
       kakao.maps.event.addListener(marker, "click", function () {
-        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
         infowindow.setContent(
-          "<div display='inline'>" +
-            '    <div class="info">' +
-            '        <div class="title">' +
+          "<div class='info'>" +
+            '    <div class="name">' +
+            '    <b class="name">' +
             place.place_name +
-            '            <div class="close" title="닫기"></div>' +
-            "        </div>" +
-            '        <div class="body">' +
-            '            <div class="desc">' +
-            '                <div class="ellipsis">' +
+            "    </b>" +
+            "    </div>" +
+            '    <div class="address">' +
             place.road_address_name +
             "</div>" +
-            '                <div><a href="' +
+            '   <div class="link"><a href="' +
             place.place_url +
-            '" target="_blank" class="link">홈페이지</a></div>' +
-            "            </div>" +
-            "        </div>" +
-            "    </div>" +
+            '   " target="_blank" class="link">상세보기</a></div>' +
             "</div>"
+          // '<div style="padding:5px;font-size:12px;">' +
+          //   place.place_name +
+          //   "</div>"
         );
 
         infowindow.open(map, marker);
@@ -171,7 +169,6 @@ export default class extends React.Component {
           });
         }
 
-        // 검색이 안되거나 실패할 경우 추후에 추가 예정
         function placesSearchCB(data, status, pagination) {
           if (status === kakao.maps.services.Status.OK) {
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -199,27 +196,19 @@ export default class extends React.Component {
           kakao.maps.event.addListener(marker, "click", function () {
             // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
             infowindow.setContent(
-              "<div display='inline'>" +
-                '    <div class="info">' +
-                '        <div class="title">' +
+              "<div class='info'>" +
+                '    <div class="name">' +
+                '    <b class="name">' +
                 place.place_name +
-                '            <div class="close" title="닫기"></div>' +
-                "        </div>" +
-                '        <div class="body">' +
-                '            <div class="desc">' +
-                '                <div class="ellipsis">' +
+                "    </b>" +
+                "    </div>" +
+                '    <div class="address">' +
                 place.road_address_name +
                 "</div>" +
-                '                <div><a href="' +
+                '   <div class="link"><a href="' +
                 place.place_url +
-                '" target="_blank" class="link">상세보기</a></div>' +
-                "            </div>" +
-                "        </div>" +
-                "    </div>" +
+                '   " target="_blank" class="link">상세보기</a></div>' +
                 "</div>"
-              // '<div style="padding:5px;font-size:12px;">' +
-              //   place.place_name +
-              //   "</div>"
             );
 
             infowindow.open(map, marker);
