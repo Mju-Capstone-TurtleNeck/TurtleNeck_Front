@@ -285,11 +285,11 @@ const SignupPresenter = (props) => (
           <Need style={{ marginTop: "15px" }}>
             이용약관 동의<span style={{ color: "red" }}> (필수)</span>
             <Terms onClick={(e) => props.SetTermFirst(e)}>
-              <input type="checkbox" />
+              <input type="checkbox" style={{ margin: 0 }} />
             </Terms>
             <Terms
               onClick={() => props.OpenTerm1Dialog()}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", marginRight: "4px" }}
             >
               약관 보기
             </Terms>
@@ -298,11 +298,11 @@ const SignupPresenter = (props) => (
             개인정보 수집 및 이용 동의
             <span style={{ color: "red" }}> (필수)</span>
             <Terms onClick={(e) => props.SetTermSecond(e)}>
-              <input type="checkbox" />
+              <input type="checkbox" style={{ margin: 0 }} />
             </Terms>
             <Terms
               onClick={() => props.OpenTerm2Dialog()}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", marginRight: "4px" }}
             >
               약관 보기
             </Terms>
