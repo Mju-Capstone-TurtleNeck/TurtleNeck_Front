@@ -52,7 +52,7 @@ function Guide() {
   return (
     <div>
       <Content>1. 편한 자세로 의자에 앉아 주세요</Content>
-      <Content>2. 머리,목, 어깨가 보이도록 측면 사진을 찍어 주세요</Content>
+      <Content>2. 머리, 목, 어깨가 보이도록 측면 사진을 찍어 주세요</Content>
       <Content>3. 사진을 넣고 검사 시작하기를 눌러주세요</Content>
       <Content>
         4. 사진이 준비 되었으면 아래 시작하기 버튼을 눌러주세요
