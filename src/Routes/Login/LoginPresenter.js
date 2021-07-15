@@ -98,9 +98,6 @@ const LoginPresenter = (props) => (
         </BtnLogin>
 
         <BtnSignUpLink>
-          <Link to="Find" style={{ textDecoration: "none" }}>
-            <SideButton>Find ID/PW</SideButton>
-          </Link>
           <span style={{ margin: "10px" }}></span>
           <Link to="Signup" style={{ textDecoration: "none" }}>
             <SideButton>Signup</SideButton>

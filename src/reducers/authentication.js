@@ -8,6 +8,10 @@ const initialState = {
     status: "INIT",
     error: -1,
   },
+  image: {
+    status: "INIT",
+    payload: [],
+  },
   status: {
     valid: false,
     isLoggedIn: false,
@@ -58,13 +62,38 @@ export default function authentication(state = initialState, action) {
         status: {
           ...state.status,
           isLoggedIn: true,
-          currentUser: action.username,
+          currentUser: action.id,
         },
       };
     case types.AUTH_LOGIN_FAILURE:
       return {
         ...state,
         login: {
+          status: "FAILURE",
+        },
+      };
+    case types.AUTH_IMAGE:
+      return {
+        ...state,
+        image: {
+          status: "WAITING",
+        },
+      };
+    case types.AUTH_IMAGE_SUCCESS:
+      return {
+        ...state,
+        image: {
+          status: "SUCCESS",
+          payload: action.resData,
+        },
+        status: {
+          ...state.status,
+        },
+      };
+    case types.AUTH_IMAGE_FAILURE:
+      return {
+        ...state,
+        image: {
           status: "FAILURE",
         },
       };
