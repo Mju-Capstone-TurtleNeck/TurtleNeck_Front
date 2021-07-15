@@ -33,14 +33,12 @@ const TitleText = styled.div`
 const RightMenu = styled.div`
   color: white;
   display: flex;
-  padding-left: 0;
   font-size: 14px;
-  width: 150px;
-  float: right;
+  width: 200px;
 `;
 
 const LeftMenu = styled.div`
-  width: 150px;
+  width: 200px;
 `;
 const drawerWidth = "20%";
 
@@ -64,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function GuidePresenter() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -75,7 +72,6 @@ function GuidePresenter() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
 
   return (
     <div>
@@ -136,7 +132,6 @@ class Header extends Component {
     else {
       this.setState({ login: true });
     }
-
   }
   render() {
     return (
@@ -149,11 +144,10 @@ class Header extends Component {
         </Link>
 
         {this.state.login ? (
-
-          <span>
-            {console.log(localStorage.getItem("token"))}
-            <p
-              style={{ paddingLeft: "80px", cursor: "pointer", color: "white" }}
+          <RightMenu>
+            {/* {console.log(localStorage.getItem("token"))} */}
+            <b
+              style={{ marginLeft: "10%", cursor: "pointer", color: "white" }}
               onClick={() => {
                 alert("로그아웃 되었습니다.");
                 localStorage.removeItem("token");
@@ -162,24 +156,39 @@ class Header extends Component {
               }}
             >
               로그아웃
-            </p>
-          </span>
-
-        ) : (
-          <RightMenu>
-            <Link to="Login" style={{ textDecoration: "none" }}>
-              <p style={{ color: "white" }}>로그인</p>
-            </Link>
-            <Link to="Signup" style={{ textDecoration: "none" }}>
-              <p
+            </b>
+            <Link
+              to="Mypage"
+              style={{ textDecoration: "none", marginLeft: "10%" }}
+            >
+              <b
                 style={{
                   color: "white",
-                  marginRight: "20px",
-                  marginLeft: "30px",
+                }}
+              >
+                마이페이지
+              </b>
+            </Link>
+          </RightMenu>
+        ) : (
+          <RightMenu>
+            <Link
+              to="Login"
+              style={{ textDecoration: "none", marginLeft: "20%" }}
+            >
+              <b style={{ color: "white" }}>로그인</b>
+            </Link>
+            <Link
+              to="Signup"
+              style={{ textDecoration: "none", marginLeft: "10%" }}
+            >
+              <b
+                style={{
+                  color: "white",
                 }}
               >
                 회원가입
-              </p>
+              </b>
             </Link>
           </RightMenu>
         )}
