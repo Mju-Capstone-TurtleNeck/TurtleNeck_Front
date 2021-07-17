@@ -2,6 +2,8 @@ import React from "react";
 import Helmet from "react-helmet";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
+import TermsOfService from "../../Components/TermsOfService";
+import PrivacyPolicy from "../../Components/PrivacyPolicy";
 import styled from "styled-components";
 import DaumPostcode from "react-daum-postcode";
 import Button from "@material-ui/core/Button";
@@ -165,8 +167,7 @@ const Term1Dialog = (props) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            <TermsOfService />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -192,8 +193,7 @@ const Term2Dialog = (props) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            <PrivacyPolicy />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
