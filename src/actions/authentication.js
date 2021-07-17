@@ -116,7 +116,7 @@ export function imageRequest(id) {
       (axios.defaults.headers.common["token"] = token),
       axios
         // .post("http://localhost:5000/api/users/login", { id, password })
-        .post(serverURL + "api/users/get-image", { id })
+        .get(serverURL + "api/users/get-image")
         .then((response) => {
           if (response.status === 200) {
             // SUCCEED
@@ -161,10 +161,9 @@ export function login() {
   };
 }
 
-export function loginSuccess(id) {
+export function loginSuccess() {
   return {
     type: AUTH_LOGIN_SUCCESS,
-    id,
   };
 }
 

@@ -39,7 +39,7 @@ export default class extends React.Component {
       let reader = new FileReader();
       let file = event.target.files[0];
       //let imgData = "";
-      console.log(file);
+      // console.log(file);
       reader.onloadend = () => {
         localStorage.setItem("imgURL", reader.result);
         this.setState({
@@ -53,7 +53,7 @@ export default class extends React.Component {
   };
 
   BtnStart = () => {
-    console.log(localStorage.getItem("imgURL"));
+    // console.log(localStorage.getItem("imgURL"));
     if (this.state.file === "") {
       alert("사진을 넣어주세요");
     } else {
@@ -87,12 +87,10 @@ export default class extends React.Component {
 
   BtnSave = () => {
     let formData = new FormData();
-    let id = "test1";
     formData.append("image", this.state.file);
-    formData.append("id", id);
     formData.append("postureStatusInfo", this.state.condition);
     return this.props.uploadRequest(formData).then(() => {
-      console.log(this.props.status);
+      // console.log(this.props.status);
       if (this.props.status === "SUCCESS") {
         alert("사진이 저장되었습니다.\n 마이페이지에서 확인할 수 있습니다.");
         this.props.history.push("/Detail");
@@ -133,10 +131,10 @@ export default class extends React.Component {
     let shox = parseInt(keypoints[valueY].position.x);
     let shoy = parseInt(keypoints[valueX].position.y);
 
-    console.log("This is ear's position!! \n" + "x :" + earx + " y :" + eary);
-    console.log(
-      "This is shoulder's position!! \n" + "x :" + shox + " y :" + shoy
-    );
+    // console.log("This is ear's position!! \n" + "x :" + earx + " y :" + eary);
+    // console.log(
+    //   "This is shoulder's position!! \n" + "x :" + shox + " y :" + shoy
+    // );
 
     // ear and shouler's angle function
     let angleDeg = (ey, sy, ex, sx) => {
@@ -148,7 +146,7 @@ export default class extends React.Component {
         return deg;
       }
     };
-    console.log("Degree : " + parseInt(angleDeg(eary, shoy, earx, shox)));
+    // console.log("Degree : " + parseInt(angleDeg(eary, shoy, earx, shox)));
 
     return angleDeg(eary, shoy, earx, shox);
   };
@@ -160,7 +158,7 @@ export default class extends React.Component {
     // 측면에 대한 포인트를 3개 이상 잡지 못하면 콘솔출력
     for (let i = 0; i < 7; i++) {
       if (count === 3) {
-        console.log("Cannot Read Image");
+        // console.log("Cannot Read Image");
         return 0;
       } else if (keypoints[i].score < 0.2) {
         count++;
@@ -173,7 +171,7 @@ export default class extends React.Component {
         conditionColor: "#fe0303",
         btnFind: "운동법 보러가기",
       });
-      console.log("Score :" + parseInt(degree) + "  You are Danger Level");
+      // console.log("Score :" + parseInt(degree) + "  You are Danger Level");
     }
     // between 73 and 60 degree
     else if (degree < semiTurtle) {
@@ -182,7 +180,7 @@ export default class extends React.Component {
         conditionColor: "#fea903",
         btnFind: "운동법 보러가기",
       });
-      console.log("Score :" + parseInt(degree) + "  You are Caution Level");
+      // console.log("Score :" + parseInt(degree) + "  You are Caution Level");
     }
     // 73 degree upper
     else {
@@ -191,7 +189,7 @@ export default class extends React.Component {
         conditionColor: "#4df15e",
         btnFind: "운동법 보러가기",
       });
-      console.log("Score :" + parseInt(degree) + "  You are Not Turtle");
+      // console.log("Score :" + parseInt(degree) + "  You are Not Turtle");
     }
     for (let i = 0; i < keypoints.length; i++) {
       const keypoint = keypoints[i];

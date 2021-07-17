@@ -19,7 +19,6 @@ const initialState = {
   status: {
     valid: false,
     isLoggedIn: false,
-    currentUser: "",
   },
 };
 
@@ -66,7 +65,6 @@ export default function authentication(state = initialState, action) {
         status: {
           ...state.status,
           isLoggedIn: true,
-          currentUser: action.id,
         },
       };
     case types.AUTH_LOGIN_FAILURE:
