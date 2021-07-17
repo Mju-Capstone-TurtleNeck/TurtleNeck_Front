@@ -11,11 +11,14 @@ const initialState = {
   image: {
     status: "INIT",
     payload: [],
+    condition: "",
+  },
+  upload: {
+    status: "INIT",
   },
   status: {
     valid: false,
     isLoggedIn: false,
-    currentUser: "",
   },
 };
 
@@ -62,7 +65,6 @@ export default function authentication(state = initialState, action) {
         status: {
           ...state.status,
           isLoggedIn: true,
-          currentUser: action.id,
         },
       };
     case types.AUTH_LOGIN_FAILURE:
@@ -84,7 +86,8 @@ export default function authentication(state = initialState, action) {
         ...state,
         image: {
           status: "SUCCESS",
-          payload: action.resData,
+          payload: action.imageData,
+          condition: action.conditionData,
         },
         status: {
           ...state.status,
@@ -94,6 +97,30 @@ export default function authentication(state = initialState, action) {
       return {
         ...state,
         image: {
+          status: "FAILURE",
+        },
+      };
+    case types.AUTH_UPLOAD:
+      return {
+        ...state,
+        upload: {
+          status: "WAITING",
+        },
+      };
+    case types.AUTH_UPLOAD_SUCCESS:
+      return {
+        ...state,
+        upload: {
+          status: "SUCCESS",
+        },
+        status: {
+          ...state.status,
+        },
+      };
+    case types.AUTH_UPLOAD_FAILURE:
+      return {
+        ...state,
+        upload: {
           status: "FAILURE",
         },
       };

@@ -14,6 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import Draggable from "react-draggable";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+
 const Section = styled.div`
   text-align: center;
 `;
@@ -229,7 +230,7 @@ const SignupPresenter = (props) => (
           <div
             style={{
               fontSize: "12px",
-              float: "right",
+              cssFloat: "right",
               marginRight: "115px",
               bottom: "11px",
               position: "relative",
@@ -256,7 +257,7 @@ const SignupPresenter = (props) => (
           <div
             style={{
               fontSize: "12px",
-              float: "right",
+              cssFloat: "right",
               bottom: "11px",
               position: "relative",
               color: props.equal ? "blue" : "red",
