@@ -9,7 +9,7 @@ const Section = styled.div`
 const SectionBox = styled.div`
   display: inline-block;
   width: 700px;
-  background: #bdecb6;
+  background: #cae9da;
   height: 700px;
   position: absolute;
   left: 50%;
