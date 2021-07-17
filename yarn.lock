@@ -1944,7 +1944,7 @@
     vega-embed "6.17.0"
     vega-lite "4.13.1"
 
-"@tensorflow/tfjs@3.8.0":
+"@tensorflow/tfjs@3.8.0", "@tensorflow/tfjs@^3.8.0":
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs/-/tfjs-3.8.0.tgz#76e9e5447c1d1725bcc25904c2c8c21f615acb0f"
   integrity sha512-4tVMEfGT8l8JBei/O0K0j7pcNbWR7C9r6WAuvoFXQBiu6FkwUhnM+rNrBHoh1/UaYKKm1enVbiyAP9+sbSFRaw==

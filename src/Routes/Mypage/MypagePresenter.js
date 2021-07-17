@@ -7,6 +7,7 @@ import Footer from "../../Components/Footer";
 import { PropTypes } from "prop-types";
 
 const MypageContainer = styled.div`
+  z-index: -1;
   position: fixed;
   top: 5%;
   left: 1%;
@@ -28,9 +29,9 @@ const TitleText = styled.strong`
 const PhotoContainer = styled.div`
   display: inline-block;
   justify-content: center;
-  margin-left: 4%;
-  margin-bottom: 4%;
-  width: 15%;
+  margin-left: 7%;
+  margin-bottom: 5%;
+  width: 11%;
   height: 30%;
   text-align: center;
 `;
@@ -113,6 +114,10 @@ const Button = styled.div`
   margin-top: 43%;
 `;
 
+const Condition = styled.h3`
+  margin: 0;
+`;
+
 const MypagePresenter = (props) => (
   <>
     <Helmet>
@@ -124,16 +129,19 @@ const MypagePresenter = (props) => (
         <Title>
           <TitleText>나의 기록</TitleText>
         </Title>
-        {props.photoData.map((data, index) => {
+
+        {props.photoData.map((data, index, array) => {
           return (
             <PhotoContainer key={index}>
               <PhotoDate>{data.date}</PhotoDate>
               <br></br>
               <img alt="" src={data.src} width="100%" height="90%"></img>
+              <Condition key={index} style={{ color: data.color }}>
+                {data.condition}
+              </Condition>
             </PhotoContainer>
           );
         })}
-
         <br></br>
       </MypageContainer>
     ) : (

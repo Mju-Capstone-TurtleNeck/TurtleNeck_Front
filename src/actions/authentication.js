@@ -9,6 +9,9 @@ import {
   AUTH_IMAGE,
   AUTH_IMAGE_SUCCESS,
   AUTH_IMAGE_FAILURE,
+  AUTH_UPLOAD,
+  AUTH_UPLOAD_SUCCESS,
+  AUTH_UPLOAD_FAILURE,
 } from "./ActionTypes";
 //thunk
 
@@ -71,6 +74,38 @@ export function loginRequest(id, password) {
   };
 }
 
+export function uploadRequest(formData) {
+  return (dispatch) => {
+    // Inform Login API is starting
+    dispatch(image());
+    // API REQUEST
+    let token = localStorage.getItem("token");
+    return (
+      (axios.defaults.headers.common["token"] = token),
+      axios
+        .post(serverURL + "api/users/upload-image", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            // SUCCEED
+            console.log(response);
+            dispatch(uploadSuccess());
+          } else {
+            // FAILED
+            console.log("fail");
+            dispatch(imageFailure());
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    );
+  };
+}
+
 export function imageRequest(id) {
   return (dispatch) => {
     // Inform Login API is starting
@@ -85,8 +120,9 @@ export function imageRequest(id) {
         .then((response) => {
           if (response.status === 200) {
             // SUCCEED
-            const resData = response.data.imageURL;
-            dispatch(imageSuccess(resData));
+            const imageData = response.data.imageURL;
+            const conditionData = response.data.postureStatusInfo;
+            dispatch(imageSuccess(imageData, conditionData));
           } else {
             // FAILED
             console.log("fail");
@@ -144,15 +180,34 @@ export function image() {
   };
 }
 
-export function imageSuccess(resData) {
+export function imageSuccess(imageData, conditionData) {
   return {
     type: AUTH_IMAGE_SUCCESS,
-    resData,
+    imageData,
+    conditionData,
   };
 }
 
 export function imageFailure() {
   return {
     type: AUTH_IMAGE_FAILURE,
+  };
+}
+
+export function upload() {
+  return {
+    type: AUTH_UPLOAD,
+  };
+}
+
+export function uploadSuccess() {
+  return {
+    type: AUTH_UPLOAD_SUCCESS,
+  };
+}
+
+export function uploadFailure() {
+  return {
+    type: AUTH_UPLOAD_FAILURE,
   };
 }

@@ -31,20 +31,39 @@ export default class extends React.Component {
     return this.props.imageRequest(this.state.myId).then(() => {
       if (this.props.status === "SUCCESS") {
         const { photoData } = this.state;
-        let data = this.props.data;
-        let dataArray = [];
 
+        let iData = this.props.data;
+        let cData = this.props.conditionData;
+        let dataArray = [];
+        let colorArray = [];
         this.setState({ hide: false });
         this.props.history.push("/Mypage");
 
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < iData.length; i++) {
+          switch (cData[i]) {
+            case "양호":
+              colorArray.push("#4df15e");
+              break;
+            case "주의":
+              colorArray.push("#fea903");
+              break;
+            case "심각":
+              colorArray.push("#fe0303");
+              break;
+            default:
+              colorArray.push("black");
+          }
+
           dataArray.push({
-            date: data[i].slice(8, 18),
-            src: serverURL + data[i],
+            date: iData[i].slice(8, 18),
+            src: serverURL + iData[i],
+            condition: cData[i],
+            color: colorArray[i],
           });
         }
-        this.setState({ photoData: photoData.concat(...dataArray) });
-
+        this.setState({
+          photoData: photoData.concat(...dataArray),
+        });
         return true;
       } else {
         alert("회원정보가 일치하지 않습니다");

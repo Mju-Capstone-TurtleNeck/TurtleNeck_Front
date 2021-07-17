@@ -1,6 +1,9 @@
 import React from "react";
 import SignupPresenter from "./SignupPresenter";
 import axios from "axios";
+
+const serverURL = process.env.REACT_APP_API_URL;
+
 export default class extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -149,7 +152,7 @@ export default class extends React.Component {
     const regex = /^[a-z0-9+]{5,12}$/;
     if (regex.test(this.state.id)) {
       axios
-        .post("/api/users/id-check", { id: this.state.id })
+        .post(serverURL + "api/users/id-check", { id: this.state.id })
         .then(() => {
           alert("사용 가능한 아이디입니다!");
           this.setState({ overlap: false });

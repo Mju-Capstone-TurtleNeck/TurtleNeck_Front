@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     status: state.authentication.image.status,
     data: state.authentication.image.payload,
+    conditionData: state.authentication.image.condition,
   };
 };
 
