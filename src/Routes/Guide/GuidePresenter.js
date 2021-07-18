@@ -12,6 +12,8 @@ const SectionBox = styled.div`
   background: #cae9da;
   height: 700px;
   position: absolute;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px gray;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

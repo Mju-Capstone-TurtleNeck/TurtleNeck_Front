@@ -14,12 +14,14 @@ const SectionBox = styled.div`
   width: 700px;
   background: #cae9da;
   height: 700px;
+  border-radius: 10px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: -1;
+  box-shadow: 3px 3px 3px gray;
 `;
 
 const MiddleBox = styled.div`
@@ -36,7 +38,7 @@ const Title = styled.h1`
   margin-bottom: 0;
 `;
 
-const Content = styled.h2`
+const Content = styled.h3`
   margin: 50px 20px 10px 20px;
   font-size: 22px;
   text-align: left;
@@ -51,8 +53,14 @@ const Button = styled.button`
   text-align: left;
   border-radius: 6px;
   border: 0px;
-  background: white;
+  background-color: white;
+  box-shadow: 3px 3px 3px black;
   cursor: pointer;
+  &:active {
+    box-shadow: none;
+    background-color: #0d9e61;
+    color: white;
+  }
 `;
 
 const HomePresenter = () => (
@@ -89,6 +97,7 @@ const HomePresenter = () => (
         </Link>
       </SectionBox>
     </Section>
+
     <Footer />
   </>
 );

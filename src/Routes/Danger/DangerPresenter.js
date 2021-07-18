@@ -11,6 +11,8 @@ const SectionBox = styled.div`
   width: 700px;
   background: #cae9da;
   height: 700px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px gray;
   position: absolute;
   left: 50%;
   top: 50%;

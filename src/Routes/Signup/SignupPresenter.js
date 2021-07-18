@@ -77,6 +77,11 @@ const BtnSignUp = styled.button`
   font-size: 23px;
   background: ${(props) => (props.disabled ? "#CAE9DA" : "#0D9E61")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  box-shadow: 2px 2px 2px gray;
+  &:active {
+    box-shadow: none;
+    background-color: #cae9da;
+  }
 `;
 const BtnZip = styled.button`
   margin-top: 15px;

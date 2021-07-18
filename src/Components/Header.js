@@ -20,7 +20,7 @@ const HeaderContainer = styled.div`
   top: 0;
   width: 100%;
   height: 40px;
-  border-bottom: solid 2px grey;
+  box-shadow: 0px 3px 3px gray;
   background-color: #0d9e61;
 `;
 
@@ -40,6 +40,7 @@ const RightMenu = styled.div`
 const LeftMenu = styled.div`
   width: 200px;
 `;
+
 const drawerWidth = "20%";
 
 const useStyles = makeStyles((theme) => ({
