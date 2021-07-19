@@ -19,6 +19,7 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 const Section = styled.div`
   text-align: center;
 `;
+
 const SectionBox = styled.div`
   display: inline-block;
   width: 450px;
@@ -27,10 +28,8 @@ const SectionBox = styled.div`
   font-weight: 550;
   border: white;
   box-shadow: 0px 1px 3px 1px gray;
-  position: absolute;
+  margin-top: 5%;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   z-index: 0;
 `;
@@ -216,7 +215,7 @@ const SignupPresenter = (props) => (
       />
       <Term1Dialog open={props.Term1Dialog} setClose={props.CloseDialog} />
       <Term2Dialog open={props.Term2Dialog} setClose={props.CloseDialog} />
-      <SectionBox>
+      <SectionBox data-aos="zoom-in-out">
         <Title>회원가입</Title>
         <div
           style={{ marginLeft: "30px", marginRight: "30px", textAlign: "left" }}

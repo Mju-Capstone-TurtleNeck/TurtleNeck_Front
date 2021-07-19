@@ -22,6 +22,7 @@ const HeaderContainer = styled.div`
   height: 40px;
   box-shadow: 0px 3px 3px gray;
   background-color: #0d9e61;
+  z-index: 1;
 `;
 
 const TitleText = styled.div`
@@ -102,10 +103,10 @@ function GuidePresenter() {
           </IconButton>
         </div>
         <List>
-          {["거북목 위험성", "교정 운동법", "이용 가이드"].map(
+          {["거북목 위험성", "이용 가이드", "교정 운동법"].map(
             (text, index) => (
               <Link
-                to={{ 0: "Danger", 1: "Exercise", 2: "Guide" }[index]}
+                to={{ 0: "Danger", 1: "Guide", 2: "Exercise" }[index]}
                 style={{
                   textDecoration: "none",
                   color: "white",

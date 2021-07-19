@@ -1,4 +1,6 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import LoginPresenter from "./LoginPresenter";
 
 export default class extends React.Component {
@@ -11,6 +13,7 @@ export default class extends React.Component {
       disabled: true,
     };
   }
+
   LoginBtnActive = () => {
     if (this.state.id !== "" && this.state.password !== "") {
       this.setState({ disabled: false });
@@ -29,6 +32,9 @@ export default class extends React.Component {
     });
   };
   componentDidMount() {
+    AOS.init({
+      duration: 1500,
+    });
     if (this.props.location.props) {
       this.setState(
         {
@@ -45,7 +51,7 @@ export default class extends React.Component {
     return this.props
       .loginRequest(this.state.id, this.state.password)
       .then(() => {
-        console.log(this.props);
+        // console.log(this.props);
         if (this.props.status === "SUCCESS") {
           alert("로그인 되었습니다");
           this.props.history.push("/");

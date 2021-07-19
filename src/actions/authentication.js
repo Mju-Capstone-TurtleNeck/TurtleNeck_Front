@@ -33,7 +33,7 @@ export function registerRequest(id, password, birth, email, zip, address) {
       .then((response) => {
         if (response.status === 200) {
           // SUCCEED
-          console.log(response.data);
+          // console.log(response.data);
           dispatch(registerSuccess(id));
         } else {
           // FAILED
@@ -41,7 +41,7 @@ export function registerRequest(id, password, birth, email, zip, address) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 }
@@ -63,12 +63,12 @@ export function loginRequest(id, password) {
             dispatch(loginSuccess(id));
           } else {
             // FAILED
-            console.log("fail");
+            // console.log("fail");
             dispatch(loginFailure());
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         })
     );
   };
@@ -91,16 +91,16 @@ export function uploadRequest(formData) {
         .then((response) => {
           if (response.status === 200) {
             // SUCCEED
-            console.log(response);
+            // console.log(response);
             dispatch(uploadSuccess());
           } else {
             // FAILED
-            console.log("fail");
+            // console.log("fail");
             dispatch(imageFailure());
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         })
     );
   };
@@ -125,12 +125,12 @@ export function imageRequest(id) {
             dispatch(imageSuccess(imageData, conditionData));
           } else {
             // FAILED
-            console.log("fail");
+            // console.log("fail");
             dispatch(imageFailure());
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         })
     );
   };

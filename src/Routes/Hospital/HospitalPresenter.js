@@ -9,7 +9,7 @@ import { PropTypes } from "prop-types";
 const MapContainer = styled.div`
   position: fixed;
   top: 20%;
-  left: 28%;
+  left: 30%;
   width: 40%;
   height: 60%;
   overflow: hidden;
@@ -21,7 +21,7 @@ const SearchContainer = styled.div`
   align-items: center;
   border-radius: 10px;
   top: 10%;
-  left: 38%;
+  left: 40%;
   width: 20%;
   height: 5%;
   background-color: #cae9da;

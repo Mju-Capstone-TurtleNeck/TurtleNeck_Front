@@ -16,9 +16,8 @@ const SectionBox = styled.div`
   background: #cae9da;
   border-radius: 10px;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 6%;
+  left: 32%;
   text-align: center;
   z-index: -1;
   box-shadow: 3px 3px 3px gray;
@@ -108,8 +107,9 @@ const DetailPresenter = (props) => (
       <title>Detail | TurtleNeck</title>
     </Helmet>
     <Header />
+    {/* data-aos="zoom-in" */}
     <Section>
-      <SectionBox>
+      <SectionBox data-aos="zoom-in">
         <Title>거북목 검사</Title>
 
         <MiddleBox>

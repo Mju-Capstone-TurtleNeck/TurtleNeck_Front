@@ -2,6 +2,8 @@ import React from "react";
 import DetailPresenter from "./DetailPresenter";
 import * as posenet from "@tensorflow-models/posenet";
 import "@tensorflow/tfjs";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const keyColor = "yellow";
 const semiTurtle = 73;
@@ -25,6 +27,11 @@ export default class extends React.Component {
       conditionColor: "",
       btnFind: "사진 리셋",
     };
+  }
+  componentDidMount() {
+    AOS.init({
+      duration: 2000,
+    });
   }
 
   // 이미지 업로드 후 사진 저장
@@ -96,7 +103,7 @@ export default class extends React.Component {
         this.props.history.push("/Detail");
         return true;
       } else {
-        alert("사진 저장에 실패했습니다.");
+        alert("로그인 후 사용 가능한 기능입니다.");
         return false;
       }
     });

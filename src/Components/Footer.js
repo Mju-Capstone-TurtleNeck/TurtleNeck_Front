@@ -10,6 +10,10 @@ import Paper from "@material-ui/core/Paper";
 import TermsOfService from "../Components/TermsOfService";
 import PrivacyPolicyDetail from "../Components/PrivacyPolicyDetail";
 
+const BREAK_POINT_MOBILE = 768;
+const BREAK_POINT_TABLET = 992;
+const BREAK_POINT_PC = 1200;
+
 const FooterContainer = styled.div`
   display: flex;
   position: fixed;

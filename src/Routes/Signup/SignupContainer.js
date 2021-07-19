@@ -1,4 +1,6 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import SignupPresenter from "./SignupPresenter";
 import axios from "axios";
 
@@ -25,6 +27,12 @@ export default class extends React.Component {
       overlap: true,
       equal: false,
     };
+  }
+
+  componentDidMount() {
+    AOS.init({
+      duration: 2000,
+    });
   }
 
   SetId = (e) => {
@@ -142,7 +150,7 @@ export default class extends React.Component {
           });
           return true;
         } else {
-          console.log(this.props);
+          // console.log(this.props);
           alert("오류");
           return false;
         }
@@ -158,7 +166,7 @@ export default class extends React.Component {
           this.setState({ overlap: false });
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           alert("이미 사용중인 아이디입니다.");
         });
     } else {
