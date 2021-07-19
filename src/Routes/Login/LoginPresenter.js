@@ -8,7 +8,6 @@ const Section = styled.div`
   text-align: center;
 `;
 const SectionBox = styled.div`
-  vertical-align: -30px;
   display: inline-block;
   width: 450px;
   padding-bottom: 30px;
@@ -16,11 +15,12 @@ const SectionBox = styled.div`
   border: white;
   box-shadow: 0px 1px 3px 1px gray;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 13%;
+  left: 38%;
 `;
 const Title = styled.div`
+  text-align: center;
+
   font-size: 40px;
   font-weight: 600;
 `;
@@ -34,6 +34,11 @@ const BtnLogin = styled.button`
   font-size: 23px;
   background: ${(props) => (props.disabled ? "#CAE9DA" : "#0D9E61")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  box-shadow: 2px 2px 2px gray;
+  &:active {
+    box-shadow: none;
+    background-color: #cae9da;
+  }
 `;
 const InputMain = styled.input`
   font-size: 20px;
@@ -80,7 +85,7 @@ const LoginPresenter = (props) => (
     </Helmet>
     <Header />
     <Section>
-      <SectionBox>
+      <SectionBox data-aos="zoom-in-out">
         <Title>Login</Title>
         <InputOutside>
           <InputDiv>

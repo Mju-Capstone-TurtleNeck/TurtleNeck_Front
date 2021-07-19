@@ -3,19 +3,22 @@ import Helmet from "react-helmet";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import styled from "styled-components";
+import YouTube from "react-youtube";
+
 const Section = styled.div`
   text-align: center;
+  overflow-x: hidden;
 `;
 const SectionBox = styled.div`
   display: inline-block;
   width: 700px;
-  background: #bdecb6;
+  background: #cae9da;
   height: 700px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 10px;
   text-align: center;
+  box-shadow: 3px 3px 3px gray;
+  margin-top: 6%;
+  margin-bottom: 50px;
   z-index: -1;
 `;
 const Title = styled.h1`
@@ -30,7 +33,14 @@ const MiddleBox = styled.div`
   vertical-align: middle;
   text-align: center;
 `;
-
+const opt = {
+  height: "390",
+  width: "640",
+  playerVars: {
+    // https://developers.google.com/youtube/player_parameters
+    autoplay: 0,
+  },
+};
 const ExercisePresenter = () => (
   <>
     <Helmet>
@@ -38,9 +48,11 @@ const ExercisePresenter = () => (
     </Helmet>
     <Header />
     <Section>
-      <SectionBox>
+      <SectionBox data-aos="zoom-in-out">
         <Title>교정 운동법</Title>
-        <MiddleBox>내용</MiddleBox>
+        <MiddleBox>
+          <YouTube videoId="3aTPapvWpKs" opts={opt} onReady={opt._onReady} />
+        </MiddleBox>
       </SectionBox>
     </Section>
     <Footer />

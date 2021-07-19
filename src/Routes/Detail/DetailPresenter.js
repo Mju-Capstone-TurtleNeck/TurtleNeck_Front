@@ -14,12 +14,13 @@ const SectionBox = styled.div`
   width: 700px;
   height: 700px;
   background: #cae9da;
+  border-radius: 10px;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 6%;
+  left: 32%;
   text-align: center;
   z-index: -1;
+  box-shadow: 3px 3px 3px gray;
 `;
 const Title = styled.h1`
   font-size: 40px;
@@ -44,6 +45,12 @@ const Button = styled.button`
   border: 0px;
   background: white;
   cursor: pointer;
+  box-shadow: 3px 3px 3px black;
+  &:active {
+    box-shadow: none;
+    background-color: #0d9e61;
+    color: white;
+  }
 `;
 
 const Plus = styled.p`
@@ -77,16 +84,21 @@ const Photo = styled.div`
 // `;
 
 const BtnFind = styled.button`
-  background: #0d9e61;
+  background: white;
   border-radius: 15px;
   border: 0px;
   padding: 5px;
   padding-left: 45px;
   padding-right: 45px;
-  color: white;
   cursor: pointer;
   margin: 30px 10px 10px 10px;
   font-size: 17px;
+  box-shadow: 3px 3px 3px black;
+  &:active {
+    box-shadow: none;
+    background-color: #0d9e61;
+    color: white;
+  }
 `;
 
 const DetailPresenter = (props) => (
@@ -95,8 +107,9 @@ const DetailPresenter = (props) => (
       <title>Detail | TurtleNeck</title>
     </Helmet>
     <Header />
+    {/* data-aos="zoom-in" */}
     <Section>
-      <SectionBox>
+      <SectionBox data-aos="zoom-in">
         <Title>거북목 검사</Title>
 
         <MiddleBox>

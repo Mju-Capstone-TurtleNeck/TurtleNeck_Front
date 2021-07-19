@@ -2,6 +2,8 @@ import React from "react";
 import Helmet from "react-helmet";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
+import TermsOfService from "../../Components/TermsOfService";
+import PrivacyPolicy from "../../Components/PrivacyPolicy";
 import styled from "styled-components";
 import DaumPostcode from "react-daum-postcode";
 import Button from "@material-ui/core/Button";
@@ -11,13 +13,13 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Paper from "@material-ui/core/Paper";
-import Draggable from "react-draggable";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const Section = styled.div`
   text-align: center;
 `;
+
 const SectionBox = styled.div`
   display: inline-block;
   width: 450px;
@@ -26,10 +28,8 @@ const SectionBox = styled.div`
   font-weight: 550;
   border: white;
   box-shadow: 0px 1px 3px 1px gray;
-  position: absolute;
+  margin-top: 5%;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   z-index: 0;
 `;
@@ -76,6 +76,11 @@ const BtnSignUp = styled.button`
   font-size: 23px;
   background: ${(props) => (props.disabled ? "#CAE9DA" : "#0D9E61")};
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  box-shadow: 2px 2px 2px gray;
+  &:active {
+    box-shadow: none;
+    background-color: #cae9da;
+  }
 `;
 const BtnZip = styled.button`
   margin-top: 15px;
@@ -115,14 +120,7 @@ const IdOverlap = styled.button`
   }
 `;
 function PaperComponent(props) {
-  return (
-    <Draggable
-      handle="#draggable-dialog-title"
-      cancel={'[class*="MuiDialogContent-root"]'}
-    >
-      <Paper {...props} />
-    </Draggable>
-  );
+  return <Paper {...props} />;
 }
 const ZipDialog = (props) => {
   return (
@@ -165,8 +163,7 @@ const Term1Dialog = (props) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            <TermsOfService />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -192,8 +189,7 @@ const Term2Dialog = (props) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            <PrivacyPolicy />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -219,7 +215,7 @@ const SignupPresenter = (props) => (
       />
       <Term1Dialog open={props.Term1Dialog} setClose={props.CloseDialog} />
       <Term2Dialog open={props.Term2Dialog} setClose={props.CloseDialog} />
-      <SectionBox>
+      <SectionBox data-aos="zoom-in-out">
         <Title>회원가입</Title>
         <div
           style={{ marginLeft: "30px", marginRight: "30px", textAlign: "left" }}

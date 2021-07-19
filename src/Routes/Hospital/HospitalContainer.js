@@ -1,7 +1,7 @@
 /*global kakao*/
 import React from "react";
-import HospitalPresenter from "./HospitalPresenter";
 import "./Hospital.css";
+import HospitalPresenter from "./HospitalPresenter";
 
 export default class extends React.Component {
   constructor(props) {
@@ -107,9 +107,6 @@ export default class extends React.Component {
             place.place_url +
             '   " target="_blank" class="link">상세보기</a></div>' +
             "</div>"
-          // '<div style="padding:5px;font-size:12px;">' +
-          //   place.place_name +
-          //   "</div>"
         );
 
         infowindow.open(map, marker);
@@ -118,8 +115,6 @@ export default class extends React.Component {
   };
 
   componentDidMount() {
-    //this.setKakaoMap(this.state.States);
-
     const script = document.createElement("script");
     script.async = true;
     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAOMAP_KEY}&libraries=services&autoload=false`;
@@ -282,7 +277,6 @@ export default class extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.Search !== prevState.Search) {
-      console.log("didmount");
       // 지도 띄우기
       let map = this.state.map;
 
