@@ -213,68 +213,6 @@ export default class extends React.Component {
     };
   }
 
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   if (this.state.Search !== prevState.Search) {
-  //     let container = document.getElementById("Map");
-  //     let options = {
-  //       center: new kakao.maps.LatLng(37.221860906359666, 127.18668187947115),
-  //       level: 7,
-  //     };
-
-  //     // 지도 띄우기
-  //     let map = new window.kakao.maps.Map(container, options);
-
-  //     // 마커에 띄울 내용
-  //     let infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-
-  //     // kakao map에서 제공하는 services 함수들을 사용하기 위해 선언
-  //     let ps = new kakao.maps.services.Places();
-
-  //     // keyword 주소(ex. 수원시 영통구) 입력 받아서 keyword setting
-  //     // 거북목 관련 병원이 많이 없어 오류가 발생하기 때문에 일단 정형외과를 default로 잡음
-  //     let setKeyword = this.state.Keyword + " 정형외과";
-
-  //     // 검색 시도
-  //     ps.keywordSearch(setKeyword, placesSearchCB);
-
-  //     // 검색이 안되거나 실패할 경우 추후에 추가 예정
-  //     function placesSearchCB(data, status, pagination) {
-  //       if (status === kakao.maps.services.Status.OK) {
-  //         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-  //         // LatLngBounds 객체에 좌표를 추가합니다
-  //         let bounds = new kakao.maps.LatLngBounds();
-
-  //         for (let i = 0; i < data.length; i++) {
-  //           displayMarker(data[i]);
-  //           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-  //         }
-
-  //         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-  //         map.setBounds(bounds);
-  //       }
-  //     }
-
-  //     function displayMarker(place) {
-  //       // 마커를 생성하고 지도에 표시합니다
-  //       let marker = new kakao.maps.Marker({
-  //         map: map,
-  //         position: new kakao.maps.LatLng(place.y, place.x),
-  //       });
-
-  //       // 마커에 클릭이벤트를 등록합니다
-  //       kakao.maps.event.addListener(marker, "click", function () {
-  //         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-  //         infowindow.setContent(
-  //           '<div style="padding:5px;font-size:12px;">' +
-  //             place.place_name +
-  //             "</div>"
-  //         );
-  //         infowindow.open(map, marker);
-  //       });
-  //     }
-  //   }
-  // }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.state.Search !== prevState.Search) {
       // 지도 띄우기
