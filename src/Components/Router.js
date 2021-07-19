@@ -12,8 +12,9 @@ import Exercise from "../Routes/Exercise";
 import Guide from "../Routes/Guide";
 import Hospital from "../Routes/Hospital";
 import Login from "../Routes/Login";
-import Result from "../Routes/Result";
 import Signup from "../Routes/Signup";
+import Detail from "../Routes/Detail";
+import Mypage from "../Routes/Mypage";
 
 export default () => (
   <Router>
@@ -25,8 +26,9 @@ export default () => (
         <Route path="/Guide" exact component={Guide} />
         <Route path="/Hospital" exact component={Hospital} />
         <Route path="/Login" exact component={Login} />
-        <Route path="/Result" exact component={Result} />
+        <Route path="/Mypage" exact component={Mypage} />
         <Route path="/Signup" exact component={Signup} />
+        <Route path="/Detail" exact component={Detail} />
         <Redirect from="*" to="/" />
       </Switch>
     </>

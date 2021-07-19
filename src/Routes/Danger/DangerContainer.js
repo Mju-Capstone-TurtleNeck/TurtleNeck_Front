@@ -1,8 +1,15 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import DangerPresenter from "./DangerPresenter";
 
 export default class extends React.Component {
-  state = {};
+  componentDidMount() {
+    AOS.init({
+      duration: "",
+    });
+  }
+
   render() {
     //const {} = this.state;
     return <DangerPresenter />;
